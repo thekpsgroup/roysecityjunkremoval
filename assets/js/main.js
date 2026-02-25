@@ -161,6 +161,12 @@
           );
           contactForm.reset();
           contactForm.querySelectorAll('[required]').forEach(f => { f.style.borderColor = ''; f.style.boxShadow = ''; });
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'form_submit', {
+              event_category: 'Contact',
+              event_label: data['service'] || 'unknown',
+            });
+          }
         } else {
           showMsg(
             contactForm,
@@ -270,6 +276,20 @@
       fadeObserver.observe(el);
     });
   }
+
+  /* ===========================
+     Phone Click Tracking (GA4)
+  =========================== */
+  document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+    link.addEventListener('click', () => {
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'phone_call', {
+          event_category: 'Contact',
+          event_label: link.textContent.trim(),
+        });
+      }
+    });
+  });
 
   /* ===========================
      Dynamic Year in Footer
