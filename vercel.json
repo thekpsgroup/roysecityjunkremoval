@@ -9,9 +9,6 @@
   },
   "cleanUrls": true,
   "trailingSlash": false,
-  "errors": [
-    { "status": 404, "destination": "/404.html" }
-  ],
   "headers": [
     {
       "source": "/(.*)",
