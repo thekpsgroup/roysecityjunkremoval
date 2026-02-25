@@ -1,0 +1,12 @@
+{
+  "name": "roysecityjunkremoval",
+  "version": "1.0.0",
+  "description": "Royse City Junk Removal website - An I30 Builders Company",
+  "private": true,
+  "dependencies": {
+    "resend": "^4.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

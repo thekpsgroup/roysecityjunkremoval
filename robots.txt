@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://roysecityjunkremoval.com/sitemap.xml
+
+# Royse City Junk Removal - roysecityjunkremoval.com
+# An I30 Builders Company
