@@ -219,7 +219,7 @@ function buildConfirmationHtml(d) {
 module.exports = async function handler(req, res) {
   // CORS
   res.setHeader('Access-Control-Allow-Credentials', 'true');
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Origin', 'https://roysecityjunkremoval.com');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
@@ -237,7 +237,13 @@ module.exports = async function handler(req, res) {
       service     = '',
       description = '',
       timing      = '',
+      website     = '',  // honeypot field — bots fill this, humans leave it blank
     } = body || {};
+
+    // Honeypot check — silently discard bot submissions
+    if (website.trim()) {
+      return res.status(200).json({ success: true });
+    }
 
     // Validate required fields
     const missing = [];

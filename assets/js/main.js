@@ -198,13 +198,13 @@
     const isSuccess = type === 'success';
     el.style.cssText = `
       padding:.85rem 1.2rem;
-      border-radius:8px;
+      border-radius:6px;
       margin-top:1rem;
       font-size:.92rem;
       font-weight:600;
-      background:${isSuccess ? '#e8f5e0' : '#fde8e8'};
-      color:${isSuccess ? '#2d6a0d' : '#c0392b'};
-      border:1px solid ${isSuccess ? '#b8dfa0' : '#f5b8b8'};
+      background:${isSuccess ? '#f4f9f0' : '#fdf5f5'};
+      color:${isSuccess ? '#2d5c10' : '#8b2020'};
+      border:1px solid ${isSuccess ? '#c8ddb0' : '#e0c0c0'};
     `;
     if (isSuccess) setTimeout(() => el.remove(), 10000);
   }
@@ -270,20 +270,6 @@
       fadeObserver.observe(el);
     });
   }
-
-  /* ===========================
-     Phone Click Tracking (GA4)
-  =========================== */
-  document.querySelectorAll('a[href^="tel:"]').forEach(link => {
-    link.addEventListener('click', () => {
-      if (typeof gtag !== 'undefined') {
-        gtag('event', 'phone_click', {
-          event_category: 'Contact',
-          event_label:    link.textContent.trim(),
-        });
-      }
-    });
-  });
 
   /* ===========================
      Dynamic Year in Footer

@@ -570,9 +570,7 @@ p:last-child { margin-bottom: 0; }
   white-space: nowrap;
 }
 
-.trust-strip-icon {
-  font-size: 1.4rem;
-}
+.trust-strip-icon { display: none; }
 
 /* === Services Section === */
 .services-grid {
@@ -724,9 +722,7 @@ p:last-child { margin-bottom: 0; }
   transform: translateY(-3px);
 }
 
-.area-icon {
-  font-size: 2rem;
-}
+.area-icon { display: none; }
 
 .area-card h3 {
   font-size: 1rem;
@@ -776,15 +772,10 @@ p:last-child { margin-bottom: 0; }
 
 .feature-icon-wrap {
   flex-shrink: 0;
-  width: 52px;
-  height: 52px;
-  background: var(--primary-glow);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
+  width: 4px;
+  height: 44px;
+  background: var(--primary);
+  border-radius: 4px;
 }
 
 .feature-item h4 {
@@ -1907,7 +1898,7 @@ p:last-child { margin-bottom: 0; }
   color: #9b2c2c;
   border: 1px solid #f5b8b8;
 }
-.accept-icon { font-size: 1.1rem; flex-shrink: 0; }
+.accept-icon { display: none; }
 
 /* === Process Steps (enhanced) === */
 .process-steps {
@@ -1940,18 +1931,7 @@ p:last-child { margin-bottom: 0; }
   background: var(--border);
 }
 .process-step:last-child::after { display: none; }
-.process-step-icon {
-  width: 72px;
-  height: 72px;
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.8rem;
-  margin: 0 auto 1.25rem;
-  box-shadow: var(--shadow-green);
-}
+.process-step-icon { display: none; }
 .process-step-num {
   position: absolute;
   top: 1.25rem;
@@ -1992,7 +1972,11 @@ p:last-child { margin-bottom: 0; }
   background: linear-gradient(135deg, var(--light-bg) 0%, var(--white) 100%);
   border-bottom: 1px solid var(--border);
 }
-.service-card-v2-icon {
+.service-card-v2-icon { display: none; }
+.service-card-v2-header {
+  border-top: 4px solid var(--primary);
+}
+._service-card-v2-icon-unused {
   width: 56px;
   height: 56px;
   background: var(--primary);
@@ -2204,7 +2188,7 @@ p:last-child { margin-bottom: 0; }
   border-radius: var(--radius-lg);
   padding: 1.5rem 1.75rem;
 }
-.callout-box-icon { font-size: 1.5rem; margin-bottom: 0.5rem; display: block; }
+.callout-box-icon { display: none; }
 .callout-box h4 { color: var(--primary-dark); margin-bottom: 0.4rem; }
 .callout-box p  { font-size: 0.92rem; color: var(--text-light); margin: 0; }
 
@@ -2311,7 +2295,7 @@ p:last-child { margin-bottom: 0; }
   text-align: center;
   border-bottom: 1px solid rgba(255,255,255,.08);
 }
-.service-aside-icon-block .big-icon { font-size: 5rem; display: block; margin-bottom: 0.5rem; }
+.service-aside-icon-block .big-icon { display: none; }
 .service-aside-icon-block h3 { color: var(--white); font-size: 1.2rem; }
 .service-aside-cta {
   padding: 1.75rem 2rem;
@@ -2356,7 +2340,7 @@ p:last-child { margin-bottom: 0; }
   border-color: var(--primary);
   box-shadow: var(--shadow-green);
 }
-.credential-badge-icon { font-size: 1.3rem; }
+.credential-badge-icon { display: none; }
 
 .team-grid {
   display: grid;
@@ -2582,3 +2566,245 @@ p:last-child { margin-bottom: 0; }
   .pricing-grid { grid-template-columns: 1fr; }
   .stats-bar-inner { grid-template-columns: 1fr 1fr; }
 }
+
+/* =============================================
+   TRADES RESKIN — Grounded, Clean Aesthetic
+   Simple service company, not a tech startup.
+   ============================================= */
+
+/* Tighter radius feels like a contractor, not an app */
+:root {
+  --radius: 5px;
+  --radius-lg: 8px;
+  --radius-xl: 10px;
+  --shadow-green: 0 2px 10px rgba(0,0,0,0.09);
+}
+
+/* Remove radial-glow pseudo-elements on dark sections */
+.hero::before,
+.hero::after,
+.cta-banner::before,
+.page-hero::before {
+  display: none;
+}
+
+/* Flatten hero — drop the third green-tinted gradient stop */
+.hero {
+  background: linear-gradient(180deg, #111811 0%, var(--dark) 100%);
+}
+
+/* Page hero and CTA banner: solid dark, no gradient hints */
+.page-hero,
+.cta-banner {
+  background: var(--dark);
+}
+
+/* Dark blocks: flat, no gradient */
+.mission-block,
+.city-card-banner,
+.service-aside-card {
+  background: var(--dark);
+}
+
+/* Buttons: no green glow, no bounce on hover */
+.btn-primary {
+  box-shadow: none;
+}
+.btn-primary:hover,
+.btn-dark:hover,
+.btn-outline:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+/* Eyebrow label: plain uppercase with a green underline — not a pill badge */
+.section-header .eyebrow {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid var(--primary);
+  padding: 0 0 0.35rem 0;
+  border-radius: 0;
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+
+/* Service card v2 header: flat off-white, no gradient */
+.service-card-v2-header {
+  background: var(--off-white);
+}
+
+/* Callout box: flat background */
+.callout-box {
+  background: var(--off-white);
+}
+
+/* Hero visual cards: no glass morphism */
+.hero-card {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  background: rgba(255,255,255,0.07);
+}
+
+/* Avatars: flat solid color */
+.testimonial-avatar {
+  background: var(--primary-dark);
+}
+.team-avatar {
+  background: var(--dark-secondary);
+}
+
+/* Process step number: no green glow */
+.step-num {
+  box-shadow: none;
+}
+
+/* Steps connector line: plain border, no gradient */
+.steps-grid::before {
+  background: var(--border);
+  opacity: 1;
+}
+
+/* Remove all card lift-on-hover — no translateY bounce */
+.service-card:hover,
+.area-card:hover,
+.service-card-v2:hover,
+.pricing-card:hover,
+.city-card:hover,
+.testimonial-card:hover,
+.testimonial-card-v2:hover,
+.process-step:hover,
+.team-card:hover,
+.contact-method-card:hover {
+  transform: none;
+}
+
+/* Replace green-tinted hover shadows with a subtle neutral shadow */
+.service-card:hover,
+.area-card:hover,
+.service-card-v2:hover,
+.city-card:hover,
+.testimonial-card:hover,
+.testimonial-card-v2:hover,
+.process-step:hover,
+.team-card:hover,
+.credential-badge:hover,
+.contact-method-card:hover {
+  box-shadow: var(--shadow-sm);
+}
+
+/* FAQ open: no green shadow */
+.faq-item.open {
+  box-shadow: none;
+}
+
+/* Pricing: neutral hover shadow */
+.pricing-card:hover {
+  box-shadow: var(--shadow);
+  transform: none;
+}
+
+/* =============================================
+   MOBILE SIMPLIFICATION
+   Incredibly simple on small screens.
+   Primary action: call the number.
+   ============================================= */
+
+@media (max-width: 768px) {
+
+  /* Remove the top bar — redundant on mobile, just adds scroll debt */
+  .top-bar { display: none; }
+
+  /* Tighter hero: remove redundant city list + checkmarks */
+  /* The trust strip below and the footer already cover this info */
+  .hero { padding: 44px 0 36px; }
+  .hero-areas { display: none; }
+  .hero-trust { display: none; }
+
+  /* Tighter section padding at tablet/phone */
+  .section { padding: 48px 0; }
+  .pricing-section { padding: 48px 0; }
+  .accept-section { padding: 48px 0; }
+  .cta-banner { padding: 48px 0; }
+
+  /* Trust strip: scroll horizontally instead of wrapping into a clumsy multi-row block */
+  .trust-strip { padding: 0.85rem 0; }
+  .trust-strip-inner {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding: 0 1.5rem;
+    gap: 1.75rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .trust-strip-inner::-webkit-scrollbar { display: none; }
+  .trust-strip-item {
+    flex-shrink: 0;
+    font-size: 0.82rem;
+  }
+
+  /* Service cards on mobile: hide the mini-lists */
+  /* Title + one-line description is enough to scan 12 cards */
+  .service-mini-list { display: none; }
+
+  /* Smaller section headers on mobile */
+  .section-header { margin-bottom: 2rem; }
+  .section-header p { font-size: 1rem; }
+
+  /* Stats bar: tighter on mobile */
+  .stats-bar { padding: 1.75rem 0; }
+
+  /* Process steps: tighter on mobile */
+  .process-step { padding: 1.75rem 1.25rem; }
+
+  /* CTA phone number: smaller on very narrow screens */
+  .cta-phone { font-size: 1.25rem; }
+
+  /* Hero h1 tighter leading on mobile */
+  .hero h1 { margin-bottom: 0.75rem; }
+  .hero-cta { margin-bottom: 1.5rem; }
+  .hero-sub { margin-bottom: 0.5rem; }
+}
+
+/* ===================================================
+   SKIP NAVIGATION — accessibility
+   =================================================== */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  z-index: 9999;
+  padding: 0.75rem 1.5rem;
+  background: var(--dark);
+  color: var(--white);
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: top 0.15s;
+}
+.skip-link:focus { top: 0; }
+
+/* ===================================================
+   FINAL POLISH — cleaner trade-company finish
+   =================================================== */
+
+/* Neutralize the over-greened palette.
+   Result: dark + white + ONE brand green.           */
+:root {
+  --off-white:  #f8f8f6;   /* was #f7fcf4 — greenish tint */
+  --light-bg:   #f4f4f2;   /* was #f0f7eb — noticeably green */
+  --border:     #e0deda;   /* was #d2e8c4 — green tint on 30+ elements */
+  --text-muted: #888888;   /* was #8a9e88 — greenish */
+}
+
+/* Header: clean border instead of floating shadow */
+.site-header { box-shadow: none; border-bottom: 1px solid var(--border); }
+.site-header.scrolled { box-shadow: none; border-bottom: 1px solid var(--border); }
+
+/* Accept section: neutral tints, color only on the text */
+.accept-column.yes .accept-item { background: #f6faf2; border-color: #cce0b0; color: #2d5c10; }
+.accept-column.no  .accept-item { background: #fdf5f5; border-color: #e8c4c4; color: #8b2020; }
+
+/* Featured contact card: remove default green glow */
+.contact-method-card.featured { box-shadow: none; }
+.contact-method-card:hover { box-shadow: var(--shadow-sm); }
