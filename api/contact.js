@@ -50,7 +50,7 @@ function buildNotificationHtml(d) {
 
         <!-- Header -->
         <tr>
-          <td style="background:#0e1210;padding:28px 36px;text-align:center;">
+          <td style="background:#000000;padding:28px 36px;text-align:center;">
             <p style="margin:0;color:#6CBE45;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;">Royse City Junk Removal</p>
             <h1 style="margin:8px 0 0;color:#ffffff;font-size:22px;">New Quote Request 🎉</h1>
           </td>
@@ -68,12 +68,12 @@ function buildNotificationHtml(d) {
         <!-- Body -->
         <tr>
           <td style="padding:32px 36px;">
-            <h2 style="margin:0 0 20px;color:#0e1210;font-size:18px;">Contact Details</h2>
+            <h2 style="margin:0 0 20px;color:#000000;font-size:18px;">Contact Details</h2>
             <table width="100%" cellpadding="0" cellspacing="0">
               <tr>
                 <td style="padding:10px 0;border-bottom:1px solid #eef5ea;">
                   <span style="color:#6b8a60;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Name</span><br>
-                  <span style="color:#0e1210;font-size:16px;font-weight:700;">${escapeHtml(d.firstName)} ${escapeHtml(d.lastName)}</span>
+                  <span style="color:#000000;font-size:16px;font-weight:700;">${escapeHtml(d.firstName)} ${escapeHtml(d.lastName)}</span>
                 </td>
               </tr>
               <tr>
@@ -92,20 +92,20 @@ function buildNotificationHtml(d) {
               <tr>
                 <td style="padding:10px 0;border-bottom:1px solid #eef5ea;">
                   <span style="color:#6b8a60;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Property Address / City</span><br>
-                  <span style="color:#0e1210;font-size:15px;">${escapeHtml(d.address)}</span>
+                  <span style="color:#000000;font-size:15px;">${escapeHtml(d.address)}</span>
                 </td>
               </tr>
               <tr>
                 <td style="padding:10px 0;border-bottom:1px solid #eef5ea;">
                   <span style="color:#6b8a60;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Service Requested</span><br>
-                  <span style="color:#0e1210;font-size:15px;font-weight:700;">${escapeHtml(SERVICE_LABELS[d.service] || d.service)}</span>
+                  <span style="color:#000000;font-size:15px;font-weight:700;">${escapeHtml(SERVICE_LABELS[d.service] || d.service)}</span>
                 </td>
               </tr>
               ${d.timing ? `
               <tr>
                 <td style="padding:10px 0;border-bottom:1px solid #eef5ea;">
                   <span style="color:#6b8a60;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Timing</span><br>
-                  <span style="color:#0e1210;font-size:15px;">${escapeHtml(TIMING_LABELS[d.timing] || d.timing)}</span>
+                  <span style="color:#000000;font-size:15px;">${escapeHtml(TIMING_LABELS[d.timing] || d.timing)}</span>
                 </td>
               </tr>` : ''}
               <tr>
@@ -160,7 +160,7 @@ function buildConfirmationHtml(d) {
       <table width="600" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:12px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.08);">
 
         <tr>
-          <td style="background:#0e1210;padding:28px 36px;text-align:center;">
+          <td style="background:#000000;padding:28px 36px;text-align:center;">
             <p style="margin:0;color:#6CBE45;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;">Royse City Junk Removal</p>
             <h1 style="margin:8px 0 0;color:#ffffff;font-size:22px;">We Got Your Request! ✅</h1>
           </td>
@@ -187,11 +187,11 @@ function buildConfirmationHtml(d) {
 
             <hr style="border:none;border-top:1px solid #eef5ea;margin:28px 0;">
 
-            <h3 style="color:#0e1210;font-size:16px;margin:0 0 12px;">Your Request Summary</h3>
+            <h3 style="color:#000000;font-size:16px;margin:0 0 12px;">Your Request Summary</h3>
             <table width="100%" cellpadding="0" cellspacing="0" style="background:#f7fcf4;border-radius:8px;padding:16px;">
-              <tr><td style="padding:6px 16px;color:#566052;font-size:14px;"><strong style="color:#0e1210;">Service:</strong> ${escapeHtml(SERVICE_LABELS[d.service] || d.service)}</td></tr>
-              <tr><td style="padding:6px 16px;color:#566052;font-size:14px;"><strong style="color:#0e1210;">Location:</strong> ${escapeHtml(d.address)}</td></tr>
-              ${d.timing ? `<tr><td style="padding:6px 16px;color:#566052;font-size:14px;"><strong style="color:#0e1210;">Timing:</strong> ${escapeHtml(TIMING_LABELS[d.timing] || d.timing)}</td></tr>` : ''}
+              <tr><td style="padding:6px 16px;color:#566052;font-size:14px;"><strong style="color:#000000;">Service:</strong> ${escapeHtml(SERVICE_LABELS[d.service] || d.service)}</td></tr>
+              <tr><td style="padding:6px 16px;color:#566052;font-size:14px;"><strong style="color:#000000;">Location:</strong> ${escapeHtml(d.address)}</td></tr>
+              ${d.timing ? `<tr><td style="padding:6px 16px;color:#566052;font-size:14px;"><strong style="color:#000000;">Timing:</strong> ${escapeHtml(TIMING_LABELS[d.timing] || d.timing)}</td></tr>` : ''}
             </table>
 
             <p style="color:#8a9e88;font-size:13px;line-height:1.6;margin:24px 0 0;">
