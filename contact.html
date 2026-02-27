@@ -15,7 +15,6 @@
 
   <title>Contact Royse City Junk Removal | Free Estimate 469-534-3392</title>
   <meta name="description" content="Contact Royse City Junk Removal for a free estimate. Call 469-534-3392 or fill out our form. Same-day service across Royse City TX &amp; nearby." />
-  <meta name="keywords" content="contact junk removal Royse City TX, junk removal estimate Royse City, free junk removal quote, same day junk removal Royse City, 469-534-3392, junk removal near me Royse City" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://roysecityjunkremoval.com/contact.html" />
 
@@ -55,6 +54,7 @@
     "@graph": [
       {
         "@type": "LocalBusiness",
+        "@id": "https://roysecityjunkremoval.com/#business",
         "name": "Royse City Junk Removal",
         "alternateName": "Royse City Junk Removal — An I30 Builders Company",
         "telephone": "+14695343392",
@@ -62,24 +62,26 @@
         "url": "https://roysecityjunkremoval.com",
         "logo": "https://roysecityjunkremoval.com/full-logo.png",
         "image": "https://roysecityjunkremoval.com/full-logo.png",
-        "address": [
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "118 E Main Street",
+          "addressLocality": "Royse City",
+          "addressRegion": "TX",
+          "postalCode": "75189",
+          "addressCountry": "US"
+        },
+        "subOrganization": [
           {
-            "@type": "PostalAddress",
-            "name": "Satellite Office",
-            "streetAddress": "118 E Main Street",
-            "addressLocality": "Royse City",
-            "addressRegion": "TX",
-            "postalCode": "75189",
-            "addressCountry": "US"
-          },
-          {
-            "@type": "PostalAddress",
-            "name": "Headquarters",
-            "streetAddress": "2346 FM 35",
-            "addressLocality": "Caddo Mills",
-            "addressRegion": "TX",
-            "postalCode": "75135",
-            "addressCountry": "US"
+            "@type": "Organization",
+            "name": "I30 Builders Headquarters",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "2346 FM 35",
+              "addressLocality": "Caddo Mills",
+              "addressRegion": "TX",
+              "postalCode": "75135",
+              "addressCountry": "US"
+            }
           }
         ],
         "geo": {
@@ -114,8 +116,10 @@
       },
       {
         "@type": "ContactPage",
+        "@id": "https://roysecityjunkremoval.com/contact.html#webpage",
         "name": "Contact Royse City Junk Removal",
         "url": "https://roysecityjunkremoval.com/contact.html",
+        "about": { "@id": "https://roysecityjunkremoval.com/#business" },
         "description": "Contact Royse City Junk Removal to get a free estimate for junk removal services in Royse City TX and surrounding areas."
       }
     ]
@@ -166,7 +170,8 @@
   </header>
 
   <!-- Page Hero -->
-  <section class="page-hero" id="main-content">
+  <main id="main-content">
+  <section class="page-hero">
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="index.html">Home</a>
@@ -174,8 +179,12 @@
         <span aria-current="page">Contact Us</span>
       </nav>
       <h1>Get Your Free Junk Removal Estimate</h1>
-      <p>No obligation, no pressure — just a fast, fair quote. Call us or fill out the form and we'll respond within the hour.</p>
-      <div class="hero-badges" style="display:flex; flex-wrap:wrap; gap:0.75rem; margin-top:1.5rem; justify-content:center;">
+      <div style="margin:1.5rem 0 1rem;">
+        <a href="tel:+14695343392" class="btn btn-primary btn-lg" style="font-size:1.15rem;">📞 Call Now 469-534-3392 — Free Quote</a>
+      </div>
+      <p style="font-size:1.05rem; color:var(--text-light);"><strong>Same-day service available</strong> — call before noon</p>
+      <p>Can't talk now? Fill out the form below and we'll respond within 1 hour (Mon–Sat, 7 AM – 7 PM).</p>
+      <div class="hero-badges" style="display:flex; flex-wrap:wrap; gap:0.75rem; margin-top:1.25rem; justify-content:center;">
         <span class="hero-badge">Free Estimates</span>
         <span class="hero-badge">Same-Day Service</span>
         <span class="hero-badge">Upfront Pricing</span>
@@ -331,11 +340,18 @@
 
         <!-- Right Column: Form -->
         <div>
+          <div style="background:var(--primary-glow); border:2px solid var(--primary); border-radius:var(--radius-lg); padding:1.5rem; margin-bottom:2rem; text-align:center;">
+            <div style="font-size:0.8rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--primary-dark); margin-bottom:0.5rem;">Quickest Way to Get Help</div>
+            <p style="margin:0.5rem 0 1.25rem; font-size:0.95rem; color:var(--text);">Get an instant quote and book same-day service by phone.</p>
+            <a href="tel:+14695343392" class="btn btn-primary btn-lg" style="width:100%; justify-content:center; font-size:1.1rem;">Call 469-534-3392</a>
+            <p style="margin:0.75rem 0 0; font-size:0.8rem; color:var(--text-light);">Mon–Sat, 7 AM – 7 PM · Immediate response</p>
+          </div>
+
           <div class="contact-form" id="contact-form-wrapper">
             <div style="background: var(--primary); padding: 1.75rem 2rem; margin: -2rem -2rem 2rem; border-radius: calc(var(--radius-lg) - 2px) calc(var(--radius-lg) - 2px) 0 0;">
-              <div style="font-size:0.7rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(0,0,0,0.6); margin-bottom:0.3rem;">Step 1 of 1</div>
-              <h2 style="color: var(--dark); font-size: 1.5rem; margin: 0 0 0.25rem;">Request a Free Estimate</h2>
-              <p style="margin:0; color: rgba(0,0,0,0.65); font-size:0.9rem;">We'll respond within 1 hour, Mon – Sat, 7 AM – 7 PM.</p>
+              <div style="font-size:0.7rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(0,0,0,0.6); margin-bottom:0.3rem;">ALTERNATIVE: Email or Form</div>
+              <h2 style="color: var(--dark); font-size: 1.5rem; margin: 0 0 0.25rem;">Fill Out a Quick Request</h2>
+              <p style="margin:0; color: rgba(0,0,0,0.65); font-size:0.9rem;">Prefer email? Submit basic details below and we'll follow up within 1 hour.</p>
             </div>
 
             <form id="contact-form" action="#" method="POST" novalidate>
@@ -438,12 +454,13 @@
               <input type="text" name="website" id="hp_website" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none!important;position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" />
 
               <!-- Submit -->
-              <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; justify-content: center; font-size:1.05rem; padding: 1rem 1.5rem;">
+              <button type="submit" class="btn btn-secondary btn-lg" style="width: 100%; justify-content: center; font-size:1.05rem; padding: 1rem 1.5rem; background:var(--text); border-color:var(--text);">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="margin-right:0.5rem;" aria-hidden="true">
                   <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
                 </svg>
-                Send My Free Estimate Request
+                Send My Estimate Request
               </button>
+              <p style="margin-top:0.75rem; font-size:0.8rem; text-align:center; color:var(--text-light);">We'll email or call you within 1 hour.</p>
 
               <p class="form-note" style="text-align:center; margin-top:0.85rem; font-size:0.8rem; color:var(--text-light);">
                 By submitting, you agree to be contacted by Royse City Junk Removal regarding your request. We never share your information with third parties.
@@ -571,6 +588,8 @@
     </div>
   </section>
 
+  </main>
+
   <!-- Footer -->
   <footer class="site-footer">
     <div class="container">
@@ -586,14 +605,18 @@
         <div class="footer-col">
           <h4>Our Services</h4>
           <ul>
-            <li><a href="services.html#residential">Residential Junk Removal</a></li>
-            <li><a href="services.html#commercial">Commercial Junk Removal</a></li>
-            <li><a href="services.html#furniture">Furniture Removal</a></li>
-            <li><a href="services.html#appliances">Appliance Removal</a></li>
-            <li><a href="services.html#estate">Estate Cleanouts</a></li>
-            <li><a href="services.html#garage">Garage Cleanouts</a></li>
-            <li><a href="services.html#construction">Construction Debris</a></li>
-            <li><a href="services.html#hottub">Hot Tub Removal</a></li>
+            <li><a href="residential-junk-removal-royse-city-tx.html">Residential Junk Removal</a></li>
+            <li><a href="commercial-junk-removal-royse-city-tx.html">Commercial Junk Removal</a></li>
+            <li><a href="furniture-removal-royse-city-tx.html">Furniture Removal</a></li>
+            <li><a href="appliance-removal-royse-city-tx.html">Appliance Removal</a></li>
+            <li><a href="estate-cleanout-royse-city-tx.html">Estate Cleanouts</a></li>
+            <li><a href="garage-cleanout-royse-city-tx.html">Garage Cleanouts</a></li>
+            <li><a href="construction-debris-removal-royse-city-tx.html">Construction Debris</a></li>
+            <li><a href="hot-tub-removal-royse-city-tx.html">Hot Tub Removal</a></li>
+            <li><a href="yard-waste-removal-royse-city-tx.html">Yard Waste Removal</a></li>
+            <li><a href="mattress-disposal-royse-city-tx.html">Mattress Disposal</a></li>
+            <li><a href="e-waste-removal-royse-city-tx.html">E-Waste Removal</a></li>
+            <li><a href="office-cleanout-royse-city-tx.html">Office Cleanouts</a></li>
           </ul>
         </div>
         <div class="footer-col">
