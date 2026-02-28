@@ -137,8 +137,8 @@ function buildNotificationHtml(d) {
         <tr>
           <td style="background:#f7fcf4;padding:16px 36px;text-align:center;border-top:1px solid #d2e8c4;">
             <p style="margin:0;color:#8a9e88;font-size:12px;">
-              Royse City Junk Removal · An I30 Builders Company<br>
-              118 E Main Street, Royse City TX 75189 · 469-534-3392
+              Royse City Junk Removal · Operated by I30 Builders LLC<br>
+              2346 FM 36, Caddo Mills, TX 75135 · 469-534-3392
             </p>
           </td>
         </tr>
@@ -203,8 +203,8 @@ function buildConfirmationHtml(d) {
         <tr>
           <td style="background:#f7fcf4;padding:16px 36px;text-align:center;border-top:1px solid #d2e8c4;">
             <p style="margin:0;color:#8a9e88;font-size:12px;">
-              © Royse City Junk Removal · An I30 Builders Company<br>
-              118 E Main Street, Royse City TX 75189
+              © Royse City Junk Removal · Operated by I30 Builders LLC<br>
+              2346 FM 36, Caddo Mills, TX 75135
             </p>
           </td>
         </tr>
@@ -217,9 +217,22 @@ function buildConfirmationHtml(d) {
 }
 
 module.exports = async function handler(req, res) {
+  const allowedOrigins = new Set([
+    'https://roysecityjunkremoval.com',
+    'https://www.roysecityjunkremoval.com',
+    'http://localhost:8080',
+  ]);
+
+  const requestOrigin = req.headers.origin;
+
   // CORS
   res.setHeader('Access-Control-Allow-Credentials', 'true');
-  res.setHeader('Access-Control-Allow-Origin', 'https://roysecityjunkremoval.com');
+  res.setHeader('Vary', 'Origin');
+  if (requestOrigin && allowedOrigins.has(requestOrigin)) {
+    res.setHeader('Access-Control-Allow-Origin', requestOrigin);
+  } else {
+    res.setHeader('Access-Control-Allow-Origin', 'https://roysecityjunkremoval.com');
+  }
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
@@ -238,6 +251,7 @@ module.exports = async function handler(req, res) {
       description = '',
       timing      = '',
       website     = '',  // honeypot field — bots fill this, humans leave it blank
+      consent_contact: consentContact = '',
     } = body || {};
 
     // Honeypot check — silently discard bot submissions
@@ -253,6 +267,7 @@ module.exports = async function handler(req, res) {
     if (!address.trim())   missing.push('address');
     if (!service.trim())   missing.push('service');
     if (!description.trim()) missing.push('description');
+    if (String(consentContact).trim().toLowerCase() !== 'yes') missing.push('contact consent');
 
     if (missing.length) {
       return res.status(400).json({ error: `Missing required fields: ${missing.join(', ')}` });
