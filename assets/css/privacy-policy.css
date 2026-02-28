@@ -1,0 +1,98 @@
+/* =============================================
+   Royse City Junk Removal — Privacy Policy Page
+   Standalone design for legal/policy content
+   ============================================= */
+
+:root {
+  --primary: #6CBE45;
+  --dark: #0f1011;
+  --text: #1a1a1a;
+  --muted: #667085;
+  --bg: #f7f8f7;
+  --card: #ffffff;
+  --border: #e7e9ec;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.65;
+}
+
+.wrap {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 28px 20px 60px;
+}
+
+.topbar {
+  background: var(--dark);
+  color: #fff;
+  padding: 22px 20px;
+  border-radius: 14px;
+  margin-bottom: 20px;
+}
+
+.topbar h1 {
+  font-size: clamp(28px, 4vw, 42px);
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+
+.topbar p {
+  color: #d1d5db;
+  font-size: 14px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+}
+
+h2 {
+  font-size: 20px;
+  margin-top: 22px;
+  margin-bottom: 8px;
+}
+
+h2:first-child { margin-top: 0; }
+
+p, li {
+  color: #2b2f33;
+  font-size: 16px;
+}
+
+ul { padding-left: 18px; }
+
+a { color: var(--primary); text-decoration: none; font-weight: 600; }
+
+.actions {
+  margin-top: 22px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
