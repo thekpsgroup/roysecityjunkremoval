@@ -1,0 +1,34 @@
+# LAUNCH URLS - COPY & PASTE
+
+## 🎯 SQUEEZE PAGE URLS
+
+### General Purpose (Google Analytics Only)
+https://roysecityjunkremoval.com/free-quote.html
+
+### Google Ads Campaign
+https://roysecityjunkremoval.com/ads-google.html?utm_source=google&utm_medium=cpc&utm_campaign=junk_removal
+
+### Microsoft Ads Campaign  
+https://roysecityjunkremoval.com/ads-microsoft.html?utm_source=bing&utm_medium=cpc&utm_campaign=junk_removal
+
+---
+
+## 🔗 QUICK COPY (No UTM)
+
+Free Quote:
+https://roysecityjunkremoval.com/free-quote.html
+
+Google Ads:
+https://roysecityjunkremoval.com/ads-google.html
+
+Microsoft Ads:
+https://roysecityjunkremoval.com/ads-microsoft.html
+
+---
+
+## 📝 NOTES
+
+- Replace `junk_removal` with specific campaign name (furniture_removal, same_day, etc.)
+- Keep utm_source as `google` or `bing` for each platform
+- utm_medium should stay as `cpc` for paid ads
+- All three pages are fully functional and ready to use
