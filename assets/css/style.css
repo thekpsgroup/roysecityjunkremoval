@@ -12,11 +12,11 @@
   --dark-secondary: #1a1a1a;
   --text: #1a1a1a;
   --text-light: #666666;
-  --text-muted: #999999;
+  --text-muted: #888888;
   --white: #ffffff;
-  --off-white: #f8f8f8;
-  --light-bg: #f5f5f5;
-  --border: #e0e0e0;
+  --off-white: #f8f8f6;
+  --light-bg: #f4f4f2;
+  --border: #e0deda;
   --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.06);
   --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
   --shadow-lg: 0 4px 12px rgba(0,0,0,0.1);
@@ -2296,45 +2296,18 @@ p:last-child { margin-bottom: 0; }
 }
 .alert-banner a { color: var(--white); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
 
-/* === Section Tabs (service nav) === */
-.services-toc {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  padding: 1.5rem 0;
-  border-bottom: 2px solid var(--border);
-  margin-bottom: 3rem;
-}
-.services-toc a {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.55rem 1rem;
-  background: var(--light-bg);
-  border: 1px solid var(--border);
-  border-radius: 50px;
-  font-family: var(--font-heading);
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: var(--text);
-  transition: all var(--transition);
-}
-.services-toc a:hover {
-  background: var(--primary);
-  color: var(--white);
-  border-color: var(--primary);
-}
+/* Section Tabs (service nav) — consolidated into Services Hub section below */
 
 /* === Service Detail Section === */
 .service-section {
   padding: 4rem 0;
-  .service-section.alternating {
-    background: var(--light-bg);
-    margin: 0 -1.5rem;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
   border-bottom: 1px solid var(--border);
+}
+.service-section.alternating {
+  background: var(--light-bg);
+  margin: 0 -1.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 .service-section:last-child { border-bottom: none; }
 .service-section-inner {
@@ -2890,14 +2863,7 @@ p:last-child { margin-bottom: 0; }
    FINAL POLISH — cleaner trade-company finish
    =================================================== */
 
-/* Neutralize the over-greened palette.
-   Result: dark + white + ONE brand green.           */
-:root {
-  --off-white:  #f8f8f6;   /* was #f7fcf4 — greenish tint */
-  --light-bg:   #f4f4f2;   /* was #f0f7eb — noticeably green */
-  --border:     #e0deda;   /* was #d2e8c4 — green tint on 30+ elements */
-  --text-muted: #888888;   /* was #8a9e88 — greenish */
-}
+/* Palette neutralization values consolidated into primary :root block above */
 
 /* Header: clean border instead of floating shadow */
 .site-header { box-shadow: none; border-bottom: 1px solid var(--border); }

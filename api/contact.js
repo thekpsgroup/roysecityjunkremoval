@@ -296,7 +296,7 @@ module.exports = async function handler(req, res) {
       }),
     ];
 
-    if (email && email.includes('@')) {
+    if (email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       sends.push(
         resend.emails.send({
           from:    fromAddress,
