@@ -1,45 +1,52 @@
 <!-- markdownlint-disable MD009 MD022 MD031 MD032 MD034 MD036 MD040 MD058 MD060 -->
 
-# ✅ SQUEEZE PAGE & ADS SETUP - COMPLETE SUMMARY
+# SQUEEZE PAGE & ADS SETUP - COMPLETE SUMMARY
 
-**Date Created:** February 28, 2026  
-**Status:** ✅ READY TO LAUNCH
+**Date Updated:** February 28, 2026
+**Status:** READY TO LAUNCH
 
 ---
 
-## 📋 WHAT'S BEEN CREATED
+## WHAT'S BEEN CREATED
 
-### Landing Pages (3 total)
+### Landing Page (Universal - Works with Any Ad Platform)
 
 | File | Purpose | URL | Status |
 |------|---------|-----|--------|
-| `free-quote.html` | General purpose squeeze page | `https://roysecityjunkremoval.com/free-quote.html` | ✅ Complete |
-| `ads-google.html` | Google Ads optimized | `https://roysecityjunkremoval.com/ads-google.html?utm_source=google&utm_medium=cpc&utm_campaign=...` | ✅ Complete |
-| `ads-microsoft.html` | Microsoft Ads optimized | `https://roysecityjunkremoval.com/ads-microsoft.html?utm_source=bing&utm_medium=cpc&utm_campaign=...` | ✅ Complete |
+| `quote.html` | Universal ad landing page | `https://roysecityjunkremoval.com/quote` | Complete |
 
-**Key Features on All Pages:**
-- ✅ Professional hero section with truck image
-- ✅ Before/After image gallery (2 transformations)
-- ✅ Trust badges (Same-Day, Upfront Pricing, Licensed & Insured, 5-Star)
-- ✅ Quote form (8 fields optimized for API)
-- ✅ Responsive design (mobile-first)
-- ✅ Sticky phone button on mobile
-- ✅ Click-to-call phone number
-- ✅ Conversion tracking (Google Analytics & UET)
-- ✅ Success page after submission
-- ✅ <2 second load time
+> Old URLs (`/ads-google`, `/ads-microsoft`, `/free-quote`) 301 redirect to `/quote`.
+
+**Key Features:**
+- Professional hero section with truck image
+- Before/After image gallery (3 transformations)
+- How It Works section (3 steps)
+- Testimonials section (3 reviews)
+- Service areas section
+- Trust badges (Same-Day, Upfront Pricing, Licensed & Insured, 5-Star)
+- Quote form (8 fields optimized for API)
+- Responsive design (mobile-first)
+- Sticky phone button on mobile
+- Click-to-call phone number
+- Google Analytics GA4 conversion tracking
+- Microsoft UET conversion tracking
+- Automatic click ID capture (gclid, msclkid, fbclid)
+- Success page after submission
+- <2 second load time
 
 ### Documentation Files
 
 | File | Contains | Status |
 |------|----------|--------|
-| `ADS_SETUP_GUIDE.md` | Complete Google & Microsoft Ads setup instructions | ✅ Complete |
-| `IMAGE_SPECIFICATIONS.md` | Image sizing and creation requirements | ✅ Complete |
-| `SETUP_SUMMARY.md` | This file | ✅ Complete |
+| `ADS_SETUP_GUIDE.md` | Complete ads setup instructions (all platforms) | Complete |
+| `IMAGE_SPECIFICATIONS.md` | Image sizing and creation requirements | Complete |
+| `GO_LIVE_CHECKLIST.md` | Pre-launch verification steps | Complete |
+| `LAUNCH_URLS.txt` | Copy-paste URLs with UTM examples | Complete |
+| `SETUP_SUMMARY.md` | This file | Complete |
 
 ---
 
-## 🖼️ IMAGES IN USE
+## IMAGES IN USE
 
 ### Current Images (Ready)
 ```
@@ -51,9 +58,9 @@ assets/images/
 ```
 
 **What you have:**
-- ✅ Professional truck + trailer photo for hero section
-- ✅ Three before/after transformations
-- ✅ 4x high-quality images
+- Professional truck + trailer photo for hero section
+- Three before/after transformations
+- 4x high-quality images
 
 **What you need to create (optional but recommended):**
 - [ ] Resize images to 1200 x 628 px for ads
@@ -65,26 +72,26 @@ See `IMAGE_SPECIFICATIONS.md` for exact dimensions & tools.
 
 ---
 
-## 🔧 BACKEND INTEGRATION
+## BACKEND INTEGRATION
 
 ### API Integration
-- ✅ Contact form connected to `/api/contact`
-- ✅ Form validation (required fields)
-- ✅ Email notifications to `sales@i30builders.com`
-- ✅ Confirmation emails to user
-- ✅ Honeypot spam protection
-- ✅ CORS headers configured
-- ✅ UET parameter passing
+- Contact form connected to `/api/contact`
+- Form validation (required fields)
+- Email notifications to `sales@i30builders.com`
+- Confirmation emails to user
+- Honeypot spam protection
+- CORS headers configured
 
 ### Tracking
-- ✅ Google Analytics GA4 integrated
-- ✅ UTM parameter support
-- ✅ Microsoft UET tag ready (needs your ID)
-- ✅ Conversion event tracking
+- Google Analytics GA4 integrated (all traffic)
+- Microsoft UET tag integrated (all traffic)
+- UTM parameter support (all platforms)
+- Click ID capture (gclid, msclkid, fbclid)
+- Conversion event tracking
 
 ---
 
-## 🎯 ESTIMATED PERFORMANCE
+## ESTIMATED PERFORMANCE
 
 Based on 2026 industry benchmarks for service businesses:
 
@@ -95,28 +102,25 @@ Based on 2026 industry benchmarks for service businesses:
 | Cost Per Lead | $15-25 | Target |
 | Quality Score | 8-10 | Expected |
 | Mobile Conversion | 35-50% | Expected |
-| Page Load Time | <2 sec | Verified ✓ |
+| Page Load Time | <2 sec | Verified |
 
 ---
 
-## 🚀 LAUNCH CHECKLIST
+## LAUNCH CHECKLIST
 
 **Before Going Live:**
 
-### Step 1: Microsoft UET Tag Setup
-- [ ] Go to Microsoft Ads Dashboard
-- [ ] Get your UET Tag ID
-- [ ] Find: `ti:"YOUR_UET_TAG_ID"` in `ads-microsoft.html`
-- [ ] Replace with your actual ID
-- [ ] Save file
+### Step 1: Verify UET Tag
+- [ ] Verify the UET Tag ID in `quote.html` matches your Microsoft Ads account
+- [ ] Current ID: `343236784`
 
 ### Step 2: Verify Images
-- [ ] Check that images load on all 3 pages
+- [ ] Check that images load on the landing page
 - [ ] Test mobile display
-- [ ] Verify before/after carousel works
+- [ ] Verify before/after gallery works
 
 ### Step 3: Test Form Submission
-- [ ] Fill out form on all 3 pages (use test data)
+- [ ] Fill out form with test data
 - [ ] Verify submission success message appears
 - [ ] Check email received at `sales@i30builders.com`
 - [ ] Verify confirmation email works
@@ -124,18 +128,21 @@ Based on 2026 industry benchmarks for service businesses:
 ### Step 4: Ads Platform Setup
 - **Google Ads:**
   - [ ] Create Search campaign
-  - [ ] Set landing page URL: `ads-google.html?utm_source=google&utm_medium=cpc&utm_campaign=...`
+  - [ ] Set landing page URL: `https://roysecityjunkremoval.com/quote?utm_source=google&utm_medium=cpc&utm_campaign=...`
   - [ ] Create conversion goal
   - [ ] Set daily budget ($20-50)
   - [ ] Choose keywords
-  
+
 - **Microsoft Ads:**
   - [ ] Create Search campaign
-  - [ ] Set landing page URL: `ads-microsoft.html?utm_source=bing&utm_medium=cpc&utm_campaign=...`
+  - [ ] Set landing page URL: `https://roysecityjunkremoval.com/quote?utm_source=bing&utm_medium=cpc&utm_campaign=...`
   - [ ] Attach UET tag to campaign
   - [ ] Create conversion goal
   - [ ] Set daily budget ($20-50)
   - [ ] Choose keywords
+
+- **Other Platforms (Facebook, TikTok, Nextdoor, etc.):**
+  - [ ] Set landing page URL: `https://roysecityjunkremoval.com/quote?utm_source={platform}&utm_medium=cpc&utm_campaign=...`
 
 ### Step 5: Monitor & Optimize
 - [ ] Check conversions daily for 1 week
@@ -146,18 +153,19 @@ Based on 2026 industry benchmarks for service businesses:
 
 ---
 
-## 📊 FILES & LOCATIONS
+## FILES & LOCATIONS
 
 ### Root Directory
 ```
 /roysecityjunkremoval/
-├── free-quote.html          [General squeeze page]
-├── ads-google.html          [Google Ads optimized]
-├── ads-microsoft.html       [Microsoft Ads optimized]
+├── quote.html               [Universal ad landing page]
 ├── ADS_SETUP_GUIDE.md       [Complete setup guide]
 ├── IMAGE_SPECIFICATIONS.md  [Image sizing guide]
+├── GO_LIVE_CHECKLIST.md     [Pre-launch checklist]
+├── LAUNCH_URLS.txt          [Copy-paste URLs]
 ├── SETUP_SUMMARY.md         [This file]
 ├── package.json
+├── vercel.json              [Redirects & security headers]
 ├── index.html               [Home page]
 ├── contact.html             [Contact page]
 └── assets/
@@ -178,10 +186,10 @@ Based on 2026 industry benchmarks for service businesses:
 
 ---
 
-## 💡 RECOMMENDED STRATEGY
+## RECOMMENDED STRATEGY
 
 ### Week 1: Testing & Optimization
-- Start with standard landing pages
+- Start with the universal landing page
 - Test form submissions
 - Monitor initial conversions
 - Adjust ad copy based on performance
@@ -200,91 +208,58 @@ Based on 2026 industry benchmarks for service businesses:
 - Expand to more service keywords
 - Consider retargeting campaigns
 - Optimize bid strategy
+- Expand to additional ad platforms (Facebook, Nextdoor)
 
 ---
 
-## 🎥 CONVERSION FLOW
+## CONVERSION FLOW
 
 **Visitor Journey:**
 
 ```
-1. See Google/Microsoft Ad
+1. See Ad (Google, Bing, Facebook, etc.)
    ↓
-2. Click ad → Land on squeeze page
+2. Click ad → Land on /quote
    ↓
 3. See hero image + trust badges
    ↓
-4. See before/after gallery (social proof)
+4. See how it works + before/after gallery
    ↓
-5. Fill out quick form
+5. Read testimonials
    ↓
-6. See success page
+6. Fill out quick form
    ↓
-7. Receive email confirmation
+7. See success page
    ↓
-8. Sales team contacts within 1 hour
+8. Receive email confirmation
+   ↓
+9. Sales team contacts within 1 hour
 ```
 
 **Conversion Points Tracked:**
-- ✓ Ad click
-- ✓ Page load
-- ✓ Form view
-- ✓ Form submit
-- ✓ Email sent
-- ✓ UTM parameters captured
+- Ad click (via click IDs)
+- Page load (GA4 + UET)
+- Form submit (GA4 conversion + UET event)
+- UTM parameters captured
+- Email sent
 
 ---
 
-## 🔐 SECURITY & COMPLIANCE
+## SECURITY & COMPLIANCE
 
-- ✅ HTTPS ready (ensure SSL certificate)
-- ✅ Form validation (server-side)
-- ✅ Honeypot spam protection
-- ✅ CORS configured
-- ✅ Privacy policy link on footer
-- ✅ No sensitive data stored on page
-- ✅ Email sanitization in API
-
----
-
-## 📞 SUPPORT & NEXT STEPS
-
-### If Form Isn't Submitting
-1. Open browser DevTools (Press F12)
-2. Go to Console tab
-3. Check for error messages
-4. Verify `/api/contact` endpoint is live
-5. Check that email is set in environment variables
-
-### If Conversions Aren't Tracking
-1. Verify GTags snippet is loaded
-2. Check Microsoft UET tag ID is correct
-3. In DevTools Network tab, check for `bat.bing` requests
-4. Wait 24 hours for conversions to sync with Google Ads
-
-### If Images Don't Load
-1. Verify file paths are correct
-2. Check that images exist in `assets/images/`
-3. Clear browser cache (Ctrl+Shift+Delete)
-4. Check file permissions
+- HTTPS ready (ensure SSL certificate)
+- Form validation (server-side)
+- Honeypot spam protection
+- CORS configured
+- Content Security Policy headers
+- Privacy policy link on footer
+- Consent checkbox required
+- No sensitive data stored on page
+- Email sanitization in API
 
 ---
 
-## 📈 KEY METRICS TO MONITOR
-
-**By End of Week 1:**
-- Impressions: 500+
-- Clicks: 30-50
-- Cost Per Click: $0.50-$2.00
-- Form Views: 20-30
-- Form Submits: 7-15
-- Cost Per Lead: $15-25
-
-**Expected Conversion Rate:** 35-45%
-
----
-
-## 💰 BUDGET RECOMMENDATION
+## BUDGET RECOMMENDATION
 
 **Starting Budget:**
 - **Google Ads:** $20-30/day
@@ -303,52 +278,27 @@ Based on 2026 industry benchmarks for service businesses:
 
 ---
 
-## ✨ WHAT MAKES THIS PAGE CONVERT
+## WHAT MAKES THIS PAGE CONVERT
 
 1. **Immediate Value** - "Free Quote" above the fold
 2. **Trust Signals** - 4 trust badges visible immediately
-3. **Social Proof** - Before/After images show results
-4. **Speed** - Load time <2 seconds
-5. **Simplicity** - One clear goal (get quote)
-6. **Mobile Ready** - Sticky phone button on mobile
-7. **Clear CTA** - Large green buttons
-8. **Low Friction** - Minimal form fields
-9. **Urgency** - "Same-Day Service Available"
-10. **Proof** - Real before/afters from actual jobs
+3. **Social Proof** - Before/After images + testimonials
+4. **How It Works** - Clear 3-step process
+5. **Speed** - Load time <2 seconds
+6. **Simplicity** - One clear goal (get quote)
+7. **Mobile Ready** - Sticky phone button on mobile
+8. **Clear CTA** - Large green buttons
+9. **Low Friction** - Minimal form fields
+10. **Urgency** - "Same-Day Service Available"
 
 ---
 
-## 🎓 ADDITIONAL RESOURCES
-
-For more information:
-- [Google Ads Best Practices](https://support.google.com/google-ads)
-- [Microsoft Ads Help](https://help.ads.microsoft.com)
-- [Landing Page Best Practices 2026](https://www.searchenginejournal.com)
-
----
-
-## ✅ FINAL CHECKLIST
-
-- [x] Squeeze page created with all best practices
-- [x] Google Ads version created with GA4 tracking
-- [x] Microsoft Ads version created with UET support
-- [x] Images integrated and optimized
-- [x] Contact form connected to backend API
-- [x] Email notifications configured
-- [x] Conversion tracking ready
-- [x] Mobile responsive design
-- [x] Documentation complete
-- [x] Ready for launch
-
----
-
-**Status: READY TO LAUNCH** 🚀
+**Status: READY TO LAUNCH**
 
 Next step: Follow ADS_SETUP_GUIDE.md to set up your campaigns!
 
 ---
 
-**Created by:** Copilot AI  
-**For:** Royse City Junk Removal  
-**Date:** February 28, 2026  
-**Version:** 1.0
+**For:** Royse City Junk Removal
+**Date:** February 28, 2026
+**Version:** 2.0 - Unified domain-agnostic landing page

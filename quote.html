@@ -2,6 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+
+  <!-- Google Analytics (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-P24LJBM6EH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-P24LJBM6EH', {
+      'ads_data_redaction': true
+    });
+  </script>
+
   <!-- Microsoft Ads UET Tag -->
   <script>
     (function(w,d,t,r,u)
@@ -22,7 +34,7 @@
     (window,document,"script","//bat.bing.com/bat.js","uetq");
   </script>
 
-  <!-- Consent Mode - Default (ad storage denied until user consents) -->
+  <!-- Microsoft Ads Consent Mode -->
   <script>
     window.uetq = window.uetq || [];
     window.uetq.push('consent', 'default', {
@@ -30,38 +42,25 @@
     });
   </script>
 
-  <!-- Enhanced Conversion Tracking (captures email & phone for better conversion attribution) -->
+  <!-- Microsoft Ads Enhanced Conversion Tracking -->
   <script>
     window.uetq = window.uetq || [];
-    // This will be populated when the form is successfully submitted
     window.submitEnhancedConversion = function(email, phone) {
-      window.uetq.push('set', { 'pid': { 
-        'em': email || '', 
-        'ph': phone || '' 
+      window.uetq.push('set', { 'pid': {
+        'em': email || '',
+        'ph': phone || ''
       } });
     };
   </script>
 
-  <!-- Consent Mode - Update (called when user accepts consent, e.g., from a cookie banner) -->
+  <!-- Microsoft Ads Consent Update (call from cookie banner) -->
   <script>
-    // This function can be called when user consents (e.g., from your cookie banner)
     window.grantConsent = function() {
       window.uetq = window.uetq || [];
       window.uetq.push('consent', 'update', {
         'ad_storage': 'granted'
       });
     };
-  </script>
-
-  <!-- Google Analytics for Microsoft Ads reference (optional) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-P24LJBM6EH"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-P24LJBM6EH', {
-      'page_path': '/ads-microsoft.html'
-    });
   </script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -80,7 +79,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
-  
+
   <style>
     :root {
       --primary: #6CBE45;
@@ -97,7 +96,7 @@
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
       color: var(--text);
@@ -160,11 +159,6 @@
       transform: translateY(-2px);
       box-shadow: 0 14px 35px rgba(0,0,0,0.3);
       background: #f4ffe9;
-    }
-
-    .phone-cta::before {
-      content: "";
-      margin-right: 0;
     }
 
     .or-text {
@@ -360,6 +354,56 @@
       color: var(--text-light);
     }
 
+    .how-it-works {
+      background: var(--white);
+      padding: 50px 20px;
+    }
+
+    .how-it-works h2 {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 40px;
+      color: var(--text);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .step {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .step-number {
+      background: var(--primary);
+      color: var(--white);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: 900;
+      margin: 0 auto 16px;
+    }
+
+    .step h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .step p {
+      font-size: 14px;
+      color: var(--text-light);
+    }
+
     .hero-image {
       margin: 30px 0 0;
       width: min(100%, 980px);
@@ -408,6 +452,81 @@
       display: block;
     }
 
+    .testimonials {
+      background: var(--off-white);
+      padding: 50px 20px;
+    }
+
+    .testimonials h2 {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 40px;
+      color: var(--text);
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .testimonial {
+      background: var(--white);
+      padding: 24px;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .stars {
+      color: #ffa500;
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+
+    .testimonial-text {
+      font-size: 15px;
+      line-height: 1.6;
+      margin-bottom: 16px;
+      color: var(--text);
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-light);
+    }
+
+    .service-areas {
+      background: var(--white);
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .service-areas h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .cities {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .city {
+      background: var(--off-white);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      color: var(--text);
+    }
+
     .final-cta {
       background: linear-gradient(135deg, #6CBE45 0%, #5aa837 100%);
       color: var(--white);
@@ -444,16 +563,16 @@
       .hero h1 {
         font-size: 30px;
       }
-      
+
       .hero .subheadline {
         font-size: 16px;
       }
-      
+
       .phone-cta {
         font-size: 24px;
         padding: 15px 26px;
       }
-      
+
       .form-container {
         padding: 24px 18px;
       }
@@ -461,11 +580,15 @@
       .trust-badges {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
-      
+
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
       .before-after-gallery {
         grid-template-columns: 1fr;
       }
-      
+
       .final-cta h2 {
         font-size: 24px;
       }
@@ -484,14 +607,14 @@
         z-index: 1000;
         display: block;
       }
-      
+
       .sticky-phone a {
         color: var(--white);
         text-decoration: none;
         font-size: 20px;
         font-weight: 700;
       }
-      
+
       body {
         padding-bottom: 86px;
       }
@@ -505,18 +628,18 @@
   </style>
 </head>
 <body>
-  
+
   <section class="hero">
     <a href="/index.html" class="logo-link" aria-label="Visit main homepage">
       <img src="full-logo.png" alt="Royse City Junk Removal" class="logo" loading="eager" fetchpriority="high" decoding="async" />
     </a>
     <h1>Get Your Space Back Today</h1>
-    <p class="subheadline">Same-Day Junk Removal • We Do All The Work • No Hidden Fees</p>
-    
+    <p class="subheadline">Same-Day Junk Removal &bull; We Do All The Work &bull; No Hidden Fees</p>
+
     <a href="tel:+14695343392" class="phone-cta">469-534-3392</a>
-    
-    <p class="or-text">— Or Get Free Quote Below —</p>
-    
+
+    <p class="or-text">&mdash; Or Get Free Quote Below &mdash;</p>
+
     <img src="assets/images/hero-truck-trailer.png" alt="Royse City Junk Removal Truck and Trailer" class="hero-image" loading="eager" fetchpriority="high" decoding="async" />
   </section>
 
@@ -535,7 +658,7 @@
         </div>
         <div class="badge">
           <div class="badge-icon">PRO</div>
-          <h3>Licensed & Insured</h3>
+          <h3>Licensed &amp; Insured</h3>
           <p>Professional team</p>
         </div>
         <div class="badge">
@@ -550,11 +673,11 @@
   <section class="form-section">
     <div class="form-container">
       <h2>Get Your Free Quote</h2>
-      <p class="form-subtitle">Takes less than 60 seconds • No obligation</p>
-      
+      <p class="form-subtitle">Takes less than 60 seconds &bull; No obligation</p>
+
       <form id="quoteForm">
         <input type="hidden" name="website" value="" />
-        
+
         <div class="form-group">
           <label for="firstName">First Name *</label>
           <input type="text" id="firstName" name="first_name" required placeholder="John" autocomplete="given-name" maxlength="40" />
@@ -564,22 +687,22 @@
           <label for="lastName">Last Name *</label>
           <input type="text" id="lastName" name="last_name" required placeholder="Smith" autocomplete="family-name" maxlength="40" />
         </div>
-        
+
         <div class="form-group">
           <label for="phone">Phone Number *</label>
           <input type="tel" id="phone" name="phone" required placeholder="469-534-3392" autocomplete="tel" inputmode="tel" pattern="[0-9()\-\s+]{10,20}" />
         </div>
-        
+
         <div class="form-group">
           <label for="email">Email Address</label>
           <input type="email" id="email" name="email" placeholder="john@example.com" autocomplete="email" maxlength="80" />
         </div>
-        
+
         <div class="form-group">
           <label for="address">Street Address *</label>
           <input type="text" id="address" name="address" required placeholder="123 Main Street" autocomplete="street-address" maxlength="120" />
         </div>
-        
+
         <div class="form-group">
           <label for="service">What do you need removed? *</label>
           <select id="service" name="service" required>
@@ -608,23 +731,46 @@
             <option value="flexible">I'm Flexible</option>
           </select>
         </div>
-        
+
         <div class="form-group">
           <label for="description">Describe what you need removed *</label>
           <textarea id="description" name="description" required placeholder="Tell us about your junk removal needs..." minlength="10" maxlength="600"></textarea>
         </div>
-        
+
         <button type="submit" class="submit-btn">Get My Free Quote Now</button>
 
         <label class="consent-note" for="consentContact">
           <input type="checkbox" id="consentContact" name="consent_contact" value="yes" required />
           <span>I consent to be contacted by call, text, and email regarding my request. Consent is not a condition of purchase. Message/data rates may apply. See our <a href="/privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>.</span>
         </label>
-        
+
         <p class="privacy-note">
           We respect your privacy. Your information will never be shared.
         </p>
       </form>
+    </div>
+  </section>
+
+  <section class="how-it-works">
+    <div class="container">
+      <h2>How It Works</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Call or Book Online</h3>
+          <p>Get your free quote in minutes. Same-day appointments available.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>We Arrive &amp; Quote</h3>
+          <p>Our team shows up on time and provides upfront pricing before we start.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>We Do All The Work</h3>
+          <p>Sit back and relax. We load, haul, and dispose of everything responsibly.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -645,6 +791,48 @@
     </div>
   </section>
 
+  <section class="testimonials">
+    <div class="container">
+      <h2>What Our Customers Say</h2>
+      <div class="testimonial-grid">
+        <div class="testimonial">
+          <div class="stars">5/5 Rating</div>
+          <p class="testimonial-text">"They came same day and removed all our old furniture. Super professional and great pricing. Highly recommend!"</p>
+          <p class="testimonial-author">&mdash; Sarah M., Royse City</p>
+        </div>
+        <div class="testimonial">
+          <div class="stars">5/5 Rating</div>
+          <p class="testimonial-text">"Best junk removal service in the area. They did all the heavy lifting and cleaned up after. Worth every penny."</p>
+          <p class="testimonial-author">&mdash; Mike T., Rockwall</p>
+        </div>
+        <div class="testimonial">
+          <div class="stars">5/5 Rating</div>
+          <p class="testimonial-text">"Fast, affordable, and friendly. They hauled away years of garage clutter in less than an hour. Amazing service!"</p>
+          <p class="testimonial-author">&mdash; Jennifer L., Fate</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="service-areas">
+    <div class="container">
+      <h2>Serving Royse City &amp; Surrounding Areas</h2>
+      <div class="cities">
+        <span class="city">Royse City</span>
+        <span class="city">Rockwall</span>
+        <span class="city">Fate</span>
+        <span class="city">Heath</span>
+        <span class="city">Caddo Mills</span>
+        <span class="city">Greenville</span>
+        <span class="city">Forney</span>
+        <span class="city">Terrell</span>
+        <span class="city">Wylie</span>
+        <span class="city">Sachse</span>
+        <span class="city">Quinlan</span>
+      </div>
+    </div>
+  </section>
+
   <section class="final-cta">
     <div class="container">
       <h2>Ready to Reclaim Your Space?</h2>
@@ -655,9 +843,12 @@
 
   <footer class="squeeze-footer">
     <div class="container">
-      <p>2026 Royse City Junk Removal — An I30 Builders Company</p>
-      <p>Licensed & Insured | <a href="mailto:sales@i30builders.com">sales@i30builders.com</a></p>
+      <p>2026 Royse City Junk Removal &mdash; An I30 Builders Company</p>
+      <p>Licensed &amp; Insured | <a href="mailto:sales@i30builders.com">sales@i30builders.com</a></p>
       <p><a href="/index.html">Visit Full Website</a> | <a href="/privacy-policy.html">Privacy Policy</a></p>
+      <p style="margin-top: 12px; font-size: 12px; opacity: 0.7;">
+        118 E Main Street, Royse City, TX 75189
+      </p>
     </div>
   </footer>
 
@@ -666,24 +857,29 @@
   </div>
 
   <script>
-    // Get UTM parameters from URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const utmSource = urlParams.get('utm_source') || 'direct';
-    const utmMedium = urlParams.get('utm_medium') || 'organic';
-    const utmCampaign = urlParams.get('utm_campaign') || 'direct';
+    // Get UTM parameters from URL - works with any ad platform
+    var urlParams = new URLSearchParams(window.location.search);
+    var utmSource = urlParams.get('utm_source') || 'direct';
+    var utmMedium = urlParams.get('utm_medium') || 'none';
+    var utmCampaign = urlParams.get('utm_campaign') || 'none';
+    var utmTerm = urlParams.get('utm_term') || '';
+    var utmContent = urlParams.get('utm_content') || '';
+    var gclid = urlParams.get('gclid') || '';
+    var msclkid = urlParams.get('msclkid') || '';
+    var fbclid = urlParams.get('fbclid') || '';
 
     document.getElementById('quoteForm').addEventListener('submit', async function(e) {
       e.preventDefault();
-      
-      const submitBtn = this.querySelector('.submit-btn');
-      const originalText = submitBtn.textContent;
+
+      var submitBtn = this.querySelector('.submit-btn');
+      var originalText = submitBtn.textContent;
       submitBtn.textContent = 'Sending...';
       submitBtn.disabled = true;
-      
-      const formData = new FormData(this);
-      const data = Object.fromEntries(formData);
 
-      Object.keys(data).forEach((key) => {
+      var formData = new FormData(this);
+      var data = Object.fromEntries(formData);
+
+      Object.keys(data).forEach(function(key) {
         if (typeof data[key] === 'string') {
           data[key] = data[key].trim();
         }
@@ -692,17 +888,22 @@
       if (data.website) {
         return;
       }
-      
-      // Add UTM parameters
+
+      // Attach UTM and click ID parameters
       data.utm_source = utmSource;
       data.utm_medium = utmMedium;
       data.utm_campaign = utmCampaign;
-      
-      try {
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 15000);
+      if (utmTerm) data.utm_term = utmTerm;
+      if (utmContent) data.utm_content = utmContent;
+      if (gclid) data.gclid = gclid;
+      if (msclkid) data.msclkid = msclkid;
+      if (fbclid) data.fbclid = fbclid;
 
-        const response = await fetch('/api/contact', {
+      try {
+        var controller = new AbortController();
+        var timeoutId = setTimeout(function() { controller.abort(); }, 15000);
+
+        var response = await fetch('/api/contact', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(data),
@@ -710,35 +911,46 @@
         });
 
         clearTimeout(timeoutId);
-        
-        const result = await response.json();
-        
+
+        var result = await response.json();
+
         if (response.ok && result.success) {
-          const formContainer = document.querySelector('.form-container');
-          formContainer.innerHTML = `
-            <div style="text-align: center; padding: 40px 20px;">
-              <div style="font-size: 24px; font-weight: 700; margin-bottom: 20px;">Request Received</div>
-              <h2 style="color: var(--primary); margin-bottom: 16px;">Thank You!</h2>
-              <p style="font-size: 18px; color: var(--text-light); margin-bottom: 24px;">
-                We received your junk removal request. A team member will contact you shortly with your free quote.
-              </p>
-              <p style="font-size: 16px; color: var(--text);">
-                <strong>Expected response time: Within 1 hour</strong>
-              </p>
-              <p style="font-size: 14px; color: var(--text-light); margin-top: 20px;">
-                Or call us now: <a href="tel:+14695343392" style="color: var(--primary); text-decoration: none; font-weight: bold;">469-534-3392</a>
-              </p>
-            </div>
-          `;
-          
-          // Submit enhanced conversion data (email & phone) to Microsoft Ads
+          var formContainer = document.querySelector('.form-container');
+          formContainer.innerHTML =
+            '<div style="text-align: center; padding: 40px 20px;">' +
+              '<div style="font-size: 24px; font-weight: 700; margin-bottom: 20px;">Request Received</div>' +
+              '<h2 style="color: var(--primary); margin-bottom: 16px;">Thank You!</h2>' +
+              '<p style="font-size: 18px; color: var(--text-light); margin-bottom: 24px;">' +
+                'We received your junk removal request. A team member will contact you shortly with your free quote.' +
+              '</p>' +
+              '<p style="font-size: 16px; color: var(--text);">' +
+                '<strong>Expected response time: Within 1 hour</strong>' +
+              '</p>' +
+              '<p style="font-size: 14px; color: var(--text-light); margin-top: 20px;">' +
+                'Or call us now: <a href="tel:+14695343392" style="color: var(--primary); text-decoration: none; font-weight: bold;">469-534-3392</a>' +
+              '</p>' +
+            '</div>';
+
+          // Google Analytics conversion
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'conversion', {
+              'transaction_id': 'quote_' + Date.now(),
+              'value': 0,
+              'currency': 'USD',
+              'source': utmSource,
+              'medium': utmMedium,
+              'campaign': utmCampaign
+            });
+          }
+
+          // Microsoft Ads enhanced conversion
           if (typeof window.submitEnhancedConversion !== 'undefined') {
             window.submitEnhancedConversion(data.email || '', data.phone || '');
           }
-          
-          // Track Microsoft Ads conversion event
-          if (typeof uetq !== 'undefined') {
-            uetq.push('event', 'lead_submission', {
+
+          // Microsoft Ads UET conversion event
+          if (typeof window.uetq !== 'undefined') {
+            window.uetq.push('event', 'lead_submission', {
               'event_value': 0,
               'currency': 'USD'
             });

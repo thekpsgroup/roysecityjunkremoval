@@ -1,16 +1,18 @@
 <!-- markdownlint-disable MD009 MD022 MD026 MD031 MD032 MD034 MD036 MD040 MD058 MD060 -->
 
-# 🎯 Royse City Junk Removal - Google & Microsoft Ads Setup Guide
+# Royse City Junk Removal - Ads Setup Guide
 
 ## Quick Links
 
-- **Google Ads Landing Page:** `https://roysecityjunkremoval.com/ads-google.html`
-- **Microsoft Ads Landing Page:** `https://roysecityjunkremoval.com/ads-microsoft.html`
-- **Original Free Quote Page:** `https://roysecityjunkremoval.com/free-quote.html`
+- **Universal Ad Landing Page:** `https://roysecityjunkremoval.com/quote`
+- **With UTM (Google):** `https://roysecityjunkremoval.com/quote?utm_source=google&utm_medium=cpc&utm_campaign=junk_removal`
+- **With UTM (Bing):** `https://roysecityjunkremoval.com/quote?utm_source=bing&utm_medium=cpc&utm_campaign=junk_removal`
+
+> One landing page works for all ad platforms. Use UTM parameters to differentiate traffic sources.
 
 ---
 
-## 📸 IMAGE SPECIFICATIONS FOR ADS
+## IMAGE SPECIFICATIONS FOR ADS
 
 ### Primary Hero Image
 **File:** `hero-truck-trailer.png`
@@ -24,7 +26,7 @@
 - **Vertical 4:5** - 960 x 1200 px
 
 **For Microsoft Audience Ads:**
-- **Primary 1.91:1** - 1200 x 628 px ✓
+- **Primary 1.91:1** - 1200 x 628 px
 - **Square 1:1** - 1200 x 1200 px
 - **Mobile 9:16** - 1080 x 1920 px
 
@@ -32,12 +34,12 @@
 - Format: `.jpg` or `.png`
 - Minimum resolution: 700 x 368 px
 - Maximum file size: No limit, but optimize to <500KB for web
-- ❌ NO text overlays or logos on the image itself
-- ✅ High quality, professional appearance
-- ✅ Relevant to ad message and landing page
+- NO text overlays or logos on the image itself
+- High quality, professional appearance
+- Relevant to ad message and landing page
 
 ### Before/After Images
-**Files:** 
+**Files:**
 - `before-after-1.png` (0.81 MB)
 - `before-after-2.png` (0.82 MB)
 - `before-after-3.png` (1.21 MB)
@@ -49,7 +51,7 @@
 
 ---
 
-## 🔧 SETUP CHECKLIST
+## SETUP CHECKLIST
 
 ### Google Ads Setup
 
@@ -76,10 +78,10 @@ Budget: Start with $20/day
 - estate cleanout near me
 
 **4. Landing Page**
-- **URL:** `https://roysecityjunkremoval.com/ads-google.html?utm_source=google&utm_medium=cpc&utm_campaign={campaign}`
+- **URL:** `https://roysecityjunkremoval.com/quote?utm_source=google&utm_medium=cpc&utm_campaign={campaign}`
 - **Page Encoding:** UTF-8
-- **Mobile:** Fully responsive ✓
-- **Loading Speed:** <3 seconds ✓
+- **Mobile:** Fully responsive
+- **Loading Speed:** <3 seconds
 
 **5. Conversion Tracking**
 - Google Analytics Goal: "Quote Form Submission"
@@ -107,14 +109,11 @@ Bidding Strategy: CPA Target (if available) or Manual CPC
 Budget: Start with $20/day
 ```
 
-**2. Setup UET Tag**
-- Go to Microsoft Ads Dashboard
-- **Tools** → **Conversion Tracking** → **UET Tags**
-- Create new tag: "Royse City Junk Removal Conversions"
-- Copy your UET Tag ID
-- **⚠️ UPDATE THE TAG ID IN:** `ads-microsoft.html`
-  - Find: `ti:"YOUR_UET_TAG_ID"`
-  - Replace with your actual ID
+**2. UET Tag**
+- The UET tag (ID: 343236784) is already installed on the landing page
+- Go to Microsoft Ads Dashboard: **Tools** > **Conversion Tracking** > **UET Tags**
+- Verify the tag ID matches your account
+- If you need to update the ID, edit `quote.html` and find `ti:"343236784"`
 
 **3. Define Conversion Goals**
 - Goal Name: "Quote Request"
@@ -123,7 +122,7 @@ Budget: Start with $20/day
 - Revenue: $50-75
 
 **4. Landing Page**
-- **URL:** `https://roysecityjunkremoval.com/ads-microsoft.html?utm_source=bing&utm_medium=cpc&utm_campaign={campaign}`
+- **URL:** `https://roysecityjunkremoval.com/quote?utm_source=bing&utm_medium=cpc&utm_campaign={campaign}`
 - Track: Ensure UET tag fires on conversion
 - Test UET: Use Debug tool in Microsoft Ads
 
@@ -151,54 +150,74 @@ Descriptions:
 
 ---
 
-## 📊 TRACKING & UTM PARAMETERS
+### Other Ad Platforms
+
+The landing page works with any ad platform. Example UTM formats:
+
+**Facebook/Instagram Ads:**
+```
+https://roysecityjunkremoval.com/quote?utm_source=facebook&utm_medium=cpc&utm_campaign=junk_removal
+```
+
+**TikTok Ads:**
+```
+https://roysecityjunkremoval.com/quote?utm_source=tiktok&utm_medium=cpc&utm_campaign=junk_removal
+```
+
+**Nextdoor Ads:**
+```
+https://roysecityjunkremoval.com/quote?utm_source=nextdoor&utm_medium=cpc&utm_campaign=junk_removal
+```
+
+The page automatically captures platform click IDs (gclid, msclkid, fbclid) when present.
+
+---
+
+## TRACKING & UTM PARAMETERS
 
 ### UTM Parameter Format
-
-All three landing pages support UTM parameters:
 
 ```
 ?utm_source={source}&utm_medium={medium}&utm_campaign={campaign}
 ```
 
-**Google Ads:**
-```
-https://roysecityjunkremoval.com/ads-google.html?utm_source=google&utm_medium=cpc&utm_campaign=junk_removal_texas
-```
-
-**Microsoft Ads:**
-```
-https://roysecityjunkremoval.com/ads-microsoft.html?utm_source=bing&utm_medium=cpc&utm_campaign=junk_removal_texas
-```
-
 **UTM Values:**
-| Parameter | Value |
+| Parameter | Example Values |
 |-----------|-------|
-| utm_source | google, bing, direct, facebook, etc. |
+| utm_source | google, bing, facebook, tiktok, nextdoor, direct |
 | utm_medium | cpc, organic, email, social |
-| utm_campaign | junk_removal_quote, furniture_removal, same_day, etc. |
+| utm_campaign | junk_removal, furniture_removal, same_day, etc. |
+| utm_term | (optional) keyword that triggered the ad |
+| utm_content | (optional) ad variation identifier |
 
 These sync with Google Analytics and are captured in the form submission.
 
+### Click ID Tracking
+
+The page automatically captures:
+- `gclid` - Google Ads click ID
+- `msclkid` - Microsoft Ads click ID
+- `fbclid` - Facebook click ID
+
 ---
 
-## 🎯 CONVERSION GOALS
+## CONVERSION GOALS
 
 ### Primary Goal: Quote Form Submission
 - **Value:** $50-75 (estimated value per lead)
-- **Track in Google Analytics:** Yes ✓
-- **Track in Microsoft Ads:** UET Tag ✓
-- **Track in CRM:** [Email to sales@i30builders.com](mailto:sales@i30builders.com)
+- **Track in Google Analytics:** Yes (gtag event)
+- **Track in Microsoft Ads:** Yes (UET event)
+- **Track in CRM:** Email to sales@i30builders.com
 
 ### Secondary Goals (Optional)
-- Phone click: `<a href="tel:+14695343392">` 
+- Phone click: `<a href="tel:+14695343392">`
 - Page visit: Tracked automatically
 
 ---
 
-## 📱 MOBILE OPTIMIZATION
+## MOBILE OPTIMIZATION
 
-✅ **All landing pages are mobile-first optimized:**
+All landing pages are mobile-first optimized:
 - Single column on mobile
 - Large tap targets (44x44px minimum)
 - Sticky phone button on mobile
@@ -209,7 +228,7 @@ These sync with Google Analytics and are captured in the form submission.
 
 ---
 
-## 🔍 QUALITY SCORE OPTIMIZATION
+## QUALITY SCORE OPTIMIZATION
 
 **Google Ads Quality Score Factors for Landing Page:**
 
@@ -226,7 +245,7 @@ These sync with Google Analytics and are captured in the form submission.
 
 ---
 
-## 💡 OPTIMIZATION TIPS
+## OPTIMIZATION TIPS
 
 ### A/B Testing
 
@@ -258,7 +277,7 @@ Create variations to test:
 
 ---
 
-## 📞 FORM INTEGRATION
+## FORM INTEGRATION
 
 ### Contact Form Fields
 
@@ -276,31 +295,34 @@ The form sends data to `/api/contact` with these fields:
   description: "1 couch and 2 chairs",
   utm_source: "google",
   utm_medium: "cpc",
-  utm_campaign: "junk_removal"
+  utm_campaign: "junk_removal",
+  gclid: "...",      // auto-captured if present
+  msclkid: "...",    // auto-captured if present
+  fbclid: "..."      // auto-captured if present
 }
 ```
 
 ### Confirmation Flow
 
-✓ **On Form Submit:**
+**On Form Submit:**
 1. Form validates (2-3 seconds)
 2. Data sent to `/api/contact` API
 3. Email sent to `sales@i30builders.com`
 4. Confirmation email sent to user
 5. Success page displays
-6. Conversion tracked
+6. Conversion tracked (Google Analytics + Microsoft UET)
 
 ---
 
-## 🚀 LAUNCH CHECKLIST
+## LAUNCH CHECKLIST
 
-- [ ] Update Microsoft UET Tag ID in `ads-microsoft.html`
+- [ ] Verify Microsoft UET Tag ID in `quote.html` matches your account
 - [ ] Add hero image variations for different ad sizes
 - [ ] Create Google Ads campaign with landing page URL
 - [ ] Create Microsoft Ads campaign with landing page URL
 - [ ] Set up conversion tracking in Google Ads
-- [ ] Set up UET tag in Microsoft Ads
-- [ ] Test form submission on both versions
+- [ ] Verify UET tag fires in Microsoft Ads
+- [ ] Test form submission
 - [ ] Verify emails are received
 - [ ] Check mobile experience on iPhone/Android
 - [ ] Monitor initial performance for 1 week
@@ -308,7 +330,7 @@ The form sends data to `/api/contact` with these fields:
 
 ---
 
-## 📈 PERFORMANCE TARGETS (First 30 Days)
+## PERFORMANCE TARGETS (First 30 Days)
 
 | Metric | Target |
 |--------|--------|
@@ -321,16 +343,13 @@ The form sends data to `/api/contact` with these fields:
 
 ---
 
-## ❓ FAQ
+## FAQ
 
-**Q: Can I use the same landing page for both Google and Microsoft Ads?**
-A: Yes, but the ad-specific versions (ads-google.html and ads-microsoft.html) have different tracking and are recommended for better data separation.
+**Q: Do I need separate landing pages for each ad platform?**
+A: No. The `/quote` page has both Google Analytics and Microsoft UET tracking built in, and uses UTM parameters to differentiate traffic sources. One page works for all platforms.
 
-**Q: What's the difference between the three landing pages?**
-A: 
-- `free-quote.html` - General purpose
-- `ads-google.html` - Google Ads optimized with GA4 tracking
-- `ads-microsoft.html` - Microsoft Ads optimized with UET tag
+**Q: What happened to the old platform-specific pages?**
+A: `/ads-google`, `/ads-microsoft`, and `/free-quote` all 301 redirect to `/quote`. Any existing ad campaigns using those URLs will continue to work.
 
 **Q: How often should I check performance?**
 A: Daily for first week, then weekly. Collect at least 50 conversions before major changes.
@@ -343,7 +362,7 @@ A: Yes - these are high-intent. Bid 25-50% higher than average.
 
 ---
 
-## 🆘 TROUBLESHOOTING
+## TROUBLESHOOTING
 
 **Problem: Form not submitting**
 - Check browser console for errors (F12)
@@ -363,7 +382,7 @@ A: Yes - these are high-intent. Bid 25-50% higher than average.
 
 ---
 
-## 📧 Support
+## Support
 
 For help with setup:
 - Email: `sales@i30builders.com`
@@ -373,4 +392,4 @@ For help with setup:
 ---
 
 **Last Updated:** February 28, 2026
-**Version:** 1.0
+**Version:** 2.0 - Unified domain-agnostic landing page

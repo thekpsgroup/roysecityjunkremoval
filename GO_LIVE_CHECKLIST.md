@@ -2,7 +2,7 @@
 
 ## 1) Required production environment variables
 
-Set these in Vercel Project Settings → Environment Variables:
+Set these in Vercel Project Settings > Environment Variables:
 
 - `RESEND_API_KEY` = your Resend API key
 - `RESEND_FROM` = verified sender (example: `Royse City Junk Removal <noreply@roysecityjunkremoval.com>`)
@@ -10,11 +10,7 @@ Set these in Vercel Project Settings → Environment Variables:
 
 ## 2) Microsoft Ads UET tag
 
-In `ads-microsoft.html`, replace:
-
-- `YOUR_UET_TAG_ID`
-
-with your real UET Tag ID from Microsoft Ads.
+In `quote.html`, verify the UET Tag ID (`ti:"343236784"`) matches your Microsoft Ads account.
 
 ## 3) Deploy
 
@@ -43,20 +39,23 @@ curl -X POST https://roysecityjunkremoval.com/api/contact \
 
 Expected result: `{"success":true,...}`
 
-### Browser test pages
+### Browser test
 
-Submit one lead test on each page:
+Submit one lead test on the landing page:
 
-- `/free-quote`
-- `/ads-google`
-- `/ads-microsoft`
+- `/quote`
+
+Also verify old URLs redirect correctly:
+- `/free-quote` -> `/quote`
+- `/ads-google` -> `/quote`
+- `/ads-microsoft` -> `/quote`
 
 ## 5) Verify outcomes
 
 - Lead notification email arrives at `NOTIFY_EMAIL`
 - Customer confirmation email arrives (when email provided)
 - GA4 receives conversion event
-- Microsoft Ads receives UET event from `ads-microsoft`
+- Microsoft Ads receives UET event
 
 ## 6) Fast rollback plan
 
