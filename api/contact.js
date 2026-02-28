@@ -7,6 +7,32 @@
 
 const { Resend } = require('resend');
 
+// --- In-memory rate limiter (no dependencies) ---
+const rateLimit = (() => {
+  const hits = new Map();         // ip -> [timestamp, timestamp, ...]
+  const WINDOW_MS = 15 * 60 * 1000; // 15-minute window
+  const MAX_REQUESTS = 5;           // max submissions per window per IP
+
+  // Prune stale entries every 10 minutes to prevent memory growth
+  setInterval(() => {
+    const now = Date.now();
+    for (const [ip, timestamps] of hits) {
+      const recent = timestamps.filter(t => now - t < WINDOW_MS);
+      if (recent.length === 0) hits.delete(ip);
+      else hits.set(ip, recent);
+    }
+  }, 10 * 60 * 1000).unref();
+
+  return function check(ip) {
+    const now = Date.now();
+    const timestamps = (hits.get(ip) || []).filter(t => now - t < WINDOW_MS);
+    if (timestamps.length >= MAX_REQUESTS) return false; // blocked
+    timestamps.push(now);
+    hits.set(ip, timestamps);
+    return true; // allowed
+  };
+})();
+
 const SERVICE_LABELS = {
   residential:   'Residential Junk Removal',
   commercial:    'Commercial Junk Removal',
@@ -238,6 +264,12 @@ module.exports = async function handler(req, res) {
 
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
+
+  // Rate limit by IP
+  const clientIp = (req.headers['x-forwarded-for'] || req.socket?.remoteAddress || '').split(',')[0].trim();
+  if (!rateLimit(clientIp)) {
+    return res.status(429).json({ error: 'Too many requests. Please try again later or call us at 469-534-3392.' });
+  }
 
   try {
     const body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
