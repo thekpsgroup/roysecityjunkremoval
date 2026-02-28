@@ -128,10 +128,9 @@
       // Validate required fields
       let valid = true;
       contactForm.querySelectorAll('[required]').forEach(field => {
-        field.style.borderColor = '';
+        field.classList.remove('form-field-error');
         if (!field.value.trim()) {
-          field.style.borderColor = '#e74c3c';
-          field.style.boxShadow   = '0 0 0 3px rgba(231,76,60,0.12)';
+          field.classList.add('form-field-error');
           valid = false;
         }
       });
@@ -164,7 +163,7 @@
             'success'
           );
           contactForm.reset();
-          contactForm.querySelectorAll('[required]').forEach(f => { f.style.borderColor = ''; f.style.boxShadow = ''; });
+          contactForm.querySelectorAll('[required]').forEach(f => { f.classList.remove('form-field-error'); });
           if (typeof gtag !== 'undefined') {
             gtag('event', 'form_submit', {
               event_category: 'Contact',
@@ -190,8 +189,7 @@
     contactForm.querySelectorAll('input, select, textarea').forEach(field => {
       field.addEventListener('input', () => {
         if (field.value.trim()) {
-          field.style.borderColor = '';
-          field.style.boxShadow   = '';
+          field.classList.remove('form-field-error');
         }
       });
     });
@@ -206,16 +204,7 @@
     }
     el.textContent = message;
     const isSuccess = type === 'success';
-    el.style.cssText = `
-      padding:.85rem 1.2rem;
-      border-radius:6px;
-      margin-top:1rem;
-      font-size:.92rem;
-      font-weight:600;
-      background:${isSuccess ? '#f4f9f0' : '#fdf5f5'};
-      color:${isSuccess ? '#2d5c10' : '#8b2020'};
-      border:1px solid ${isSuccess ? '#c8ddb0' : '#e0c0c0'};
-    `;
+    el.className = isSuccess ? 'form-message form-message-success' : 'form-message form-message-error';
     if (isSuccess) setTimeout(() => el.remove(), 10000);
   }
 
@@ -265,8 +254,7 @@
       entries.forEach((entry, i) => {
         if (entry.isIntersecting) {
           setTimeout(() => {
-            entry.target.style.opacity  = '1';
-            entry.target.style.transform = 'translateY(0)';
+            entry.target.classList.add('fade-in-visible');
           }, (i % 6) * 70);
           fadeObserver.unobserve(entry.target);
         }
@@ -274,9 +262,7 @@
     }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
 
     fadeEls.forEach(el => {
-      el.style.opacity   = '0';
-      el.style.transform = 'translateY(18px)';
-      el.style.transition = 'opacity .45s ease, transform .45s ease';
+      el.classList.add('fade-in-ready');
       fadeObserver.observe(el);
     });
   }
