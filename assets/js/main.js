@@ -44,6 +44,10 @@
       ) closeMenu();
     });
 
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mainNav.classList.contains('open')) closeMenu();
+    });
+
     function closeMenu() {
       mainNav.classList.remove('open');
       menuToggle.classList.remove('open');
