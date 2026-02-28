@@ -5,7 +5,7 @@
 ## 🎯 YOUR FINAL MICROSOFT ADS LANDING PAGE URL
 
 ```
-https://roysecityjunkremoval.com/ads-microsoft.html?utm_source=bing&utm_medium=cpc&utm_campaign=junk_removal_quote
+https://roysecityjunkremoval.com/quote?utm_source=bing&utm_medium=cpc&utm_campaign=junk_removal_quote
 ```
 
 **Copy this exact URL into Microsoft Ads dashboard**
@@ -78,7 +78,7 @@ Call Now For Free Quote
 
 ### Final URL Format
 ```
-https://roysecityjunkremoval.com/ads-microsoft.html?utm_source=bing&utm_medium=cpc&utm_campaign={YOUR_CAMPAIGN}
+https://roysecityjunkremoval.com/quote?utm_source=bing&utm_medium=cpc&utm_campaign={YOUR_CAMPAIGN}
 ```
 
 ### UET Tag Setup
@@ -87,7 +87,7 @@ https://roysecityjunkremoval.com/ads-microsoft.html?utm_source=bing&utm_medium=c
 - **Event Value:** 1
 - **Revenue:** 50 USD (estimated value per lead)
 
-Replace `[ENTER YOUR ID HERE]` in the ads-microsoft.html file with your actual UET tag ID from Microsoft Ads.
+Replace `[ENTER YOUR ID HERE]` in the quote.html file with your actual UET tag ID from Microsoft Ads.
 
 ---
 
@@ -145,13 +145,13 @@ Replace `[ENTER YOUR ID HERE]` in the ads-microsoft.html file with your actual U
 - [ ] Language: English
 - [ ] Daily Budget: $20
 - [ ] Get your UET Tag ID from Tools > Conversion Tracking
-- [ ] Update the UET Tag ID in ads-microsoft.html
+- [ ] Update the UET Tag ID in quote.html
 - [ ] Create Ad Group: "Quote Request"
 - [ ] Add Keywords from list above
 - [ ] Create Responsive Search Ads using copy provided
 - [ ] Set Final URL to:
   ```
-  https://roysecityjunkremoval.com/ads-microsoft.html?utm_source=bing&utm_medium=cpc&utm_campaign=junk_removal_quote
+  https://roysecityjunkremoval.com/quote?utm_source=bing&utm_medium=cpc&utm_campaign=junk_removal_quote
   ```
 - [ ] Add Call Extension: 469-534-3392
 - [ ] Set Conversion Goal: Quote Request (1 point, $50 value)
@@ -199,7 +199,7 @@ Replace `[ENTER YOUR ID HERE]` in the ads-microsoft.html file with your actual U
 
 ## 🔐 UET TAG IMPLEMENTATION
 
-The ads-microsoft.html file already has UET tag code installed.
+The quote.html file already has UET tag code installed.
 
 **Steps to Activate:**
 
@@ -209,7 +209,7 @@ The ads-microsoft.html file already has UET tag code installed.
    - Create new tag: "Royse City Junk Removal"
    - Copy the Tag ID (looks like: "123456789")
 
-2. Update the tag in ads-microsoft.html:
+2. Update the tag in quote.html:
    - Find: `ti:"YOUR_UET_TAG_ID"`
    - Replace with your actual ID: `ti:"123456789"`
    - Save file
@@ -294,7 +294,7 @@ UTM Parameters (auto-captured)
 
 **Day 1:**
 - [ ] Set up UET tag in Microsoft Ads
-- [ ] Update UET tag ID in ads-microsoft.html
+- [ ] Update UET tag ID in quote.html
 - [ ] Create campaign with keywords
 - [ ] Add responsive search ads with copy
 - [ ] Set final URL and call extension
@@ -324,17 +324,17 @@ UTM Parameters (auto-captured)
 ## 🔗 FINAL URLS TO USE
 
 **Main Landing Page:**
-https://roysecityjunkremoval.com/ads-microsoft.html?utm_source=bing&utm_medium=cpc&utm_campaign=junk_removal_quote
+https://roysecityjunkremoval.com/quote?utm_source=bing&utm_medium=cpc&utm_campaign=junk_removal_quote
 
 **Without UTM (for testing):**
-https://roysecityjunkremoval.com/ads-microsoft.html
+https://roysecityjunkremoval.com/quote
 
 ---
 
 ## ⚠️ IMPORTANT REMINDERS
 
-1. **UET Tag ID** - Must update in ads-microsoft.html before going live
-2. **Final URL** - Must match exactly what's in ads-microsoft.html
+1. **UET Tag ID** - Must update in quote.html before going live
+2. **Final URL** - Must match exactly what's in quote.html
 3. **Conversion Tracking** - Enable in Microsoft Ads account
 4. **Call Extension** - Add 469-534-3392
 5. **Budget** - Start with $5/day, scale after testing
@@ -367,7 +367,7 @@ https://roysecityjunkremoval.com/ads-microsoft.html
 Everything is set up and optimized. Just:
 
 1. Get your UET tag ID from Microsoft Ads
-2. Update it in ads-microsoft.html
+2. Update it in quote.html
 3. Use the landing page URL provided
 4. Set up campaign with keywords and copy from this document
 5. Monitor daily for first week

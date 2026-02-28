@@ -1,34 +1,38 @@
 # LAUNCH URLS - COPY & PASTE
 
-## 🎯 SQUEEZE PAGE URLS
+## UNIVERSAL AD LANDING PAGE
 
-### General Purpose (Google Analytics Only)
-https://roysecityjunkremoval.com/free-quote.html
+Use this single URL for ALL ad platforms (Google, Microsoft/Bing, Facebook, Instagram, TikTok, etc.)
+Just change the UTM parameters to match the platform.
 
-### Google Ads Campaign
-https://roysecityjunkremoval.com/ads-google.html?utm_source=google&utm_medium=cpc&utm_campaign=junk_removal
-
-### Microsoft Ads Campaign  
-https://roysecityjunkremoval.com/ads-microsoft.html?utm_source=bing&utm_medium=cpc&utm_campaign=junk_removal
+### Base URL
+https://roysecityjunkremoval.com/quote
 
 ---
 
-## 🔗 QUICK COPY (No UTM)
+## PLATFORM-SPECIFIC UTM EXAMPLES
 
-Free Quote:
-https://roysecityjunkremoval.com/free-quote.html
+### Google Ads
+https://roysecityjunkremoval.com/quote?utm_source=google&utm_medium=cpc&utm_campaign=junk_removal
 
-Google Ads:
-https://roysecityjunkremoval.com/ads-google.html
+### Microsoft/Bing Ads
+https://roysecityjunkremoval.com/quote?utm_source=bing&utm_medium=cpc&utm_campaign=junk_removal
 
-Microsoft Ads:
-https://roysecityjunkremoval.com/ads-microsoft.html
+### Facebook/Instagram Ads
+https://roysecityjunkremoval.com/quote?utm_source=facebook&utm_medium=cpc&utm_campaign=junk_removal
+
+### TikTok Ads
+https://roysecityjunkremoval.com/quote?utm_source=tiktok&utm_medium=cpc&utm_campaign=junk_removal
+
+### Nextdoor Ads
+https://roysecityjunkremoval.com/quote?utm_source=nextdoor&utm_medium=cpc&utm_campaign=junk_removal
 
 ---
 
-## 📝 NOTES
+## NOTES
 
 - Replace `junk_removal` with specific campaign name (furniture_removal, same_day, etc.)
-- Keep utm_source as `google` or `bing` for each platform
+- utm_source should match the platform name
 - utm_medium should stay as `cpc` for paid ads
-- All three pages are fully functional and ready to use
+- The page captures gclid, msclkid, and fbclid click IDs automatically
+- Old URLs (/ads-google, /ads-microsoft, /free-quote) 301 redirect to /quote
