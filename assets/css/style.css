@@ -7,18 +7,23 @@
   --primary: #6CBE45;
   --primary-dark: #4d8e2c;
   --primary-light: #7dd055;
+  --primary-glow: rgba(108,190,69,0.08);
   --dark: #000000;
+  --dark-secondary: #1a1a1a;
   --text: #1a1a1a;
   --text-light: #666666;
-  --text-muted: #999999;
+  --text-muted: #888888;
   --white: #ffffff;
-  --off-white: #f8f8f8;
-  --light-bg: #f5f5f5;
-  --border: #e0e0e0;
+  --off-white: #f8f8f6;
+  --light-bg: #f4f4f2;
+  --border: #e0deda;
   --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.06);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
   --shadow-lg: 0 4px 12px rgba(0,0,0,0.1);
-  --radius: 6px;
-  --radius-lg: 10px;
+  --shadow-green: 0 2px 10px rgba(0,0,0,0.09);
+  --radius: 5px;
+  --radius-lg: 8px;
+  --radius-xl: 10px;
   --font-heading: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
   --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
   --transition: 0.2s ease;
@@ -773,34 +778,6 @@ p:last-child { margin-bottom: 0; }
   gap: 0.75rem;
 }
 
-.author-avatar {
-  width: 44px;
-  height: 44px;
-  background: var(--primary);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-heading);
-  font-size: 1rem;
-  font-weight: 800;
-  color: var(--dark);
-  flex-shrink: 0;
-}
-
-.author-name {
-  font-family: var(--font-heading);
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: var(--dark);
-  display: block;
-}
-
-.author-city {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-}
-
 /* === FAQ Section === */
 .faq-list {
   max-width: 800px;
@@ -1545,9 +1522,6 @@ p:last-child { margin-bottom: 0; }
 .gap-1 { gap: 0.25rem; }
 .gap-2 { gap: 0.5rem; }
 .mb-0 { margin-bottom: 0; }
-.mb-3 { margin-bottom: 0.75rem; }
-.mt-1 { margin-top: 1rem; }
-.mt-2 { margin-top: 2rem; }
 
 /* === Divider === */
 .divider {
@@ -2064,18 +2038,7 @@ p:last-child { margin-bottom: 0; }
 .service-card-v2-header {
   border-top: 4px solid var(--primary);
 }
-._service-card-v2-icon-unused {
-  width: 56px;
-  height: 56px;
-  background: var(--primary);
-  border-radius: var(--radius-lg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.6rem;
-  margin-bottom: 1rem;
-  box-shadow: var(--shadow-green);
-}
+
 .service-card-v2-header h3 { font-size: 1.1rem; margin: 0; }
 .service-card-v2-body {
   padding: 1.25rem 1.75rem;
@@ -2292,45 +2255,18 @@ p:last-child { margin-bottom: 0; }
 }
 .alert-banner a { color: var(--white); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
 
-/* === Section Tabs (service nav) === */
-.services-toc {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  padding: 1.5rem 0;
-  border-bottom: 2px solid var(--border);
-  margin-bottom: 3rem;
-}
-.services-toc a {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.55rem 1rem;
-  background: var(--light-bg);
-  border: 1px solid var(--border);
-  border-radius: 50px;
-  font-family: var(--font-heading);
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: var(--text);
-  transition: all var(--transition);
-}
-.services-toc a:hover {
-  background: var(--primary);
-  color: var(--white);
-  border-color: var(--primary);
-}
+/* Section Tabs (service nav) — consolidated into Services Hub section below */
 
 /* === Service Detail Section === */
 .service-section {
   padding: 4rem 0;
-  .service-section.alternating {
-    background: var(--light-bg);
-    margin: 0 -1.5rem;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
   border-bottom: 1px solid var(--border);
+}
+.service-section.alternating {
+  background: var(--light-bg);
+  margin: 0 -1.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 .service-section:last-child { border-bottom: none; }
 .service-section-inner {
@@ -2678,13 +2614,7 @@ p:last-child { margin-bottom: 0; }
    Simple service company, not a tech startup.
    ============================================= */
 
-/* Tighter radius feels like a contractor, not an app */
-:root {
-  --radius: 5px;
-  --radius-lg: 8px;
-  --radius-xl: 10px;
-  --shadow-green: 0 2px 10px rgba(0,0,0,0.09);
-}
+/* Variables consolidated into primary :root block above */
 
 /* Remove radial-glow pseudo-elements on dark sections */
 .hero::before,
@@ -2892,14 +2822,7 @@ p:last-child { margin-bottom: 0; }
    FINAL POLISH — cleaner trade-company finish
    =================================================== */
 
-/* Neutralize the over-greened palette.
-   Result: dark + white + ONE brand green.           */
-:root {
-  --off-white:  #f8f8f6;   /* was #f7fcf4 — greenish tint */
-  --light-bg:   #f4f4f2;   /* was #f0f7eb — noticeably green */
-  --border:     #e0deda;   /* was #d2e8c4 — green tint on 30+ elements */
-  --text-muted: #888888;   /* was #8a9e88 — greenish */
-}
+/* Palette neutralization values consolidated into primary :root block above */
 
 /* Header: clean border instead of floating shadow */
 .site-header { box-shadow: none; border-bottom: 1px solid var(--border); }
@@ -3268,4 +3191,97 @@ a:hover { color: var(--dark); }
 
 .btn-outline-on-dark:hover {
   border-color: rgba(255,255,255,0.75);
+}
+
+/* === Utility Classes (extracted from inline styles) === */
+.no-underline { text-decoration: none; }
+.text-inherit { color: inherit; }
+.mt-md { margin-top: 1rem; }
+.my-section { margin-top: 2rem; margin-bottom: 1rem; }
+.center-flex { text-align: center; justify-content: center; }
+.container-narrow { max-width: 900px; margin: 0 auto; }
+
+/* === Dark Sidebar Card Components === */
+.sidebar-sticky {
+  position: sticky;
+  top: 160px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.card-dark {
+  background: var(--dark);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+.card-dark-header {
+  padding: 1.75rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.card-dark-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.card-dark-title {
+  color: var(--white);
+  margin-bottom: 0.25rem;
+  font-size: 1.2rem;
+}
+.card-dark-badge {
+  color: var(--primary);
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.info-row-last {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+}
+.info-label {
+  color: rgba(255,255,255,0.5);
+  font-size: 0.82rem;
+}
+.info-value {
+  color: var(--white);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+.info-value-primary {
+  color: var(--primary);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+.link-dashed { text-decoration: none; border-style: dashed; }
+
+/* === Focus Styles for Keyboard Navigation === */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* === Reduced Motion === */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
