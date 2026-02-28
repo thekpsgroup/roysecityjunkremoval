@@ -1,12 +1,15 @@
+<!-- markdownlint-disable MD009 MD022 MD031 MD032 MD034 MD036 MD040 MD058 MD060 -->
+
 # IMAGE SPECIFICATIONS QUICK REFERENCE
 
 ## 📸 Current Images (Ready to Use)
 
 ```
 assets/images/
-├── hero-truck-equipment.jpeg (4.3 MB) ✓
-├── before-after-1.jpeg (4.0 MB) ✓
-└── before-after-2.jpeg (3.2 MB) ✓
+├── hero-truck-trailer.png (1.03 MB) ✓
+├── before-after-1.png (0.81 MB) ✓
+├── before-after-2.png (0.82 MB) ✓
+└── before-after-3.png (1.21 MB) ✓
 ```
 
 ---
@@ -15,7 +18,7 @@ assets/images/
 
 For best performance in Google & Microsoft paid ads, create these image sizes from your existing photos:
 
-### 1️⃣ HERO IMAGE (From `hero-truck-equipment.jpeg`)
+### 1️⃣ HERO IMAGE (From `hero-truck-trailer.png`)
 
 | Name | Dimensions | Aspect | File Size | Use |
 |------|-----------|--------|-----------|-----|
@@ -24,13 +27,13 @@ For best performance in Google & Microsoft paid ads, create these image sizes fr
 | Hero Mobile | 600 x 800 px | 3:4 | <300KB | Mobile responsive |
 
 **Steps to create:**
-1. Take `hero-truck-equipment.jpeg`
+1. Take `hero-truck-trailer.png`
 2. Crop to 1.91:1 ratio (landscape)
 3. Resize to 1200 x 628 px
 4. Compress with TinyPNG or similar
 5. Save as `hero-truck-1200x628.jpg`
 
-### 2️⃣ BEFORE/AFTER #1 (From `before-after-1.jpeg`)
+### 2️⃣ BEFORE/AFTER #1 (From `before-after-1.png`)
 
 | Name | Dimensions | Aspect | File Size | Use |
 |------|-----------|--------|-----------|-----|
@@ -38,13 +41,13 @@ For best performance in Google & Microsoft paid ads, create these image sizes fr
 | Before/After 1 Square | 1200 x 1200 px | 1:1 | <500KB | Social ads |
 
 **Steps:**
-1. Take `before-after-1.jpeg` (driveway transformation)
+1. Take `before-after-1.png` (driveway transformation)
 2. Crop center portion to 1.91:1
 3. Resize to 1200 x 628 px
 4. Compress to <500KB
 5. Save as `before-after-1-1200x628.jpg`
 
-### 3️⃣ BEFORE/AFTER #2 (From `before-after-2.jpeg`)
+### 3️⃣ BEFORE/AFTER #2 (From `before-after-2.png`)
 
 | Name | Dimensions | Aspect | File Size |
 |------|-----------|--------|-----------|
@@ -120,9 +123,9 @@ For best performance in Google & Microsoft paid ads, create these image sizes fr
 To launch ads TODAY, you need at least:
 
 ```
-✓ hero-truck-equipment.jpeg (1200 x 628)
-✓ before-after-1.jpeg (1200 x 628)
-✓ before-after-2.jpeg (1200 x 628)
+✓ hero-truck-trailer.png (1200 x 628)
+✓ before-after-1.png (1200 x 628)
+✓ before-after-2.png (1200 x 628)
 ```
 
 **That's it!** These 3 images in the right size will work for:
@@ -147,7 +150,7 @@ To launch ads TODAY, you need at least:
 
 ## 🚀 NEXT STEPS
 
-1. **Resize your 3 current images to:**
+1. **Resize your 4 current images to:**
    - 1200 x 628 px (main ads size)
    
 2. **Compress them to < 500KB each**
@@ -157,7 +160,8 @@ To launch ads TODAY, you need at least:
    assets/images/ads/
    ├── hero-1200x628.jpg
    ├── before-after-1-1200x628.jpg
-   └── before-after-2-1200x628.jpg
+   ├── before-after-2-1200x628.jpg
+   └── before-after-3-1200x628.jpg
    ```
 
 4. **Use in Google/Microsoft Ads dashboard**

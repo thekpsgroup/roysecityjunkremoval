@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD009 MD022 MD026 MD031 MD032 MD034 MD036 MD040 MD058 MD060 -->
+
 # 🎯 Royse City Junk Removal - Google & Microsoft Ads Setup Guide
 
 ## Quick Links
@@ -11,8 +13,8 @@
 ## 📸 IMAGE SPECIFICATIONS FOR ADS
 
 ### Primary Hero Image
-**File:** `hero-truck-equipment.jpeg`
-**Current Size:** 4.3 MB
+**File:** `hero-truck-trailer.png`
+**Current Size:** 1.03 MB
 
 #### Recommended Ad Image Versions:
 
@@ -36,8 +38,9 @@
 
 ### Before/After Images
 **Files:** 
-- `before-after-1.jpeg` (4.0 MB)
-- `before-after-2.jpeg` (3.2 MB)
+- `before-after-1.png` (0.81 MB)
+- `before-after-2.png` (0.82 MB)
+- `before-after-3.png` (1.21 MB)
 
 **Ad Sizes:**
 - Same specifications as hero image above

@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD009 MD022 MD031 MD032 MD034 MD036 MD040 MD058 MD060 -->
+
 # ✅ SQUEEZE PAGE & ADS SETUP - COMPLETE SUMMARY
 
 **Date Created:** February 28, 2026  
@@ -42,16 +44,16 @@
 ### Current Images (Ready)
 ```
 assets/images/
-├── hero-truck-equipment.jpeg (4.3 MB)
-├── before-after-1.jpeg (4.0 MB) 
-└── before-after-2.jpeg (3.2 MB)
+├── hero-truck-trailer.png (1.03 MB)
+├── before-after-1.png (0.81 MB)
+├── before-after-2.png (0.82 MB)
+└── before-after-3.png (1.21 MB)
 ```
 
 **What you have:**
-- ✅ Professional truck photo for hero section
-- ✅ Driveway before/after transformation
-- ✅ Garage before/after transformation
-- ✅ 3x high-quality images
+- ✅ Professional truck + trailer photo for hero section
+- ✅ Three before/after transformations
+- ✅ 4x high-quality images
 
 **What you need to create (optional but recommended):**
 - [ ] Resize images to 1200 x 628 px for ads
@@ -160,9 +162,10 @@ Based on 2026 industry benchmarks for service businesses:
 ├── contact.html             [Contact page]
 └── assets/
     └── images/
-        ├── hero-truck-equipment.jpeg      [4.3 MB]
-        ├── before-after-1.jpeg            [4.0 MB]
-        └── before-after-2.jpeg            [3.2 MB]
+      ├── hero-truck-trailer.png         [1.03 MB]
+      ├── before-after-1.png             [0.81 MB]
+      ├── before-after-2.png             [0.82 MB]
+      └── before-after-3.png             [1.21 MB]
 ```
 
 ### API Endpoint
