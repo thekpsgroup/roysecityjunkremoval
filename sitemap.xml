@@ -115,6 +115,14 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Privacy Policy -->
+  <url>
+    <loc>https://roysecityjunkremoval.com/privacy-policy.html</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
   <!-- Dedicated Service Pages -->
   <url>
     <loc>https://roysecityjunkremoval.com/residential-junk-removal-royse-city-tx.html</loc>

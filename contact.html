@@ -75,7 +75,7 @@
             "name": "I30 Builders Headquarters",
             "address": {
               "@type": "PostalAddress",
-              "streetAddress": "2346 FM 35",
+              "streetAddress": "2346 FM 36",
               "addressLocality": "Caddo Mills",
               "addressRegion": "TX",
               "postalCode": "75135",
@@ -281,10 +281,10 @@
                   <div style="font-size:0.7rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--primary); margin-bottom:0.25rem;">Headquarters</div>
                   <h3 style="font-size:1rem; margin:0 0 0.4rem;">Caddo Mills, TX</h3>
                   <address style="font-style:normal; color:var(--text-light); font-size:0.9rem; line-height:1.6;">
-                    2346 FM 35<br>
+                    2346 FM 36<br>
                     Caddo Mills, TX 75135
                   </address>
-                  <a href="https://maps.google.com/?q=2346+FM+35+Caddo+Mills+TX+75135" target="_blank" rel="noopener noreferrer" style="display:inline-block; margin-top:0.75rem; font-size:0.85rem; color:var(--primary-dark); font-weight:600;">Get Directions</a>
+                  <a href="https://maps.google.com/?q=2346+FM+36+Caddo+Mills+TX+75135" target="_blank" rel="noopener noreferrer" style="display:inline-block; margin-top:0.75rem; font-size:0.85rem; color:var(--primary-dark); font-weight:600;">Get Directions</a>
                 </div>
               </div>
 
@@ -452,6 +452,14 @@
               <!-- Honeypot: visible only to bots -->
               <input type="text" name="website" id="hp_website" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none!important;position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" />
 
+              <!-- Consent checkbox -->
+              <div class="form-group">
+                <label style="display:flex; gap:0.6rem; align-items:flex-start; font-size:0.85rem; font-weight:400; text-transform:none; letter-spacing:0; color:var(--text-light); cursor:pointer;">
+                  <input type="checkbox" id="consentContact" name="consent_contact" value="yes" required style="margin-top:0.2rem; flex-shrink:0;" />
+                  <span>I consent to be contacted by call, text, and email regarding my request. Consent is not a condition of purchase. Message/data rates may apply. See our <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>.</span>
+                </label>
+              </div>
+
               <!-- Submit -->
               <button type="submit" class="btn btn-secondary btn-lg" style="width: 100%; justify-content: center; font-size:1.05rem; padding: 1rem 1.5rem; background:var(--text); border-color:var(--text);">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="margin-right:0.5rem;" aria-hidden="true">
@@ -460,10 +468,6 @@
                 Send My Estimate Request
               </button>
               <p style="margin-top:0.75rem; font-size:0.8rem; text-align:center; color:var(--text-light);">We'll email or call you within 1 hour.</p>
-
-              <p class="form-note" style="text-align:center; margin-top:0.85rem; font-size:0.8rem; color:var(--text-light);">
-                By submitting, you agree to be contacted by Royse City Junk Removal regarding your request. We never share your information with third parties.
-              </p>
 
               <!-- Success/Error message container (populated by JS) -->
               <div id="form-message" role="alert" aria-live="polite"></div>
@@ -501,66 +505,54 @@
         <h2>What to Expect When You Call or Submit</h2>
         <p class="section-subtitle">Here's what happens after you reach out to us.</p>
       </div>
-      <div class="faq-grid" style="max-width: 800px; margin: 0 auto;">
+      <div class="faq-list">
 
         <div class="faq-item">
           <button class="faq-question" aria-expanded="false">
             How quickly will you respond to my quote request?
-            <span class="faq-icon" aria-hidden="true"></span>
+            <span class="faq-chevron" aria-hidden="true">&#9660;</span>
           </button>
-          <div class="faq-answer">
-            <p>If you call during business hours (Mon–Sat, 7 AM–7 PM), you'll get a response immediately — we can often give you a price estimate right over the phone. For form submissions, we aim to respond within 1 business hour during operating hours. Submissions received after 7 PM will be answered first thing the following morning.</p>
-          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">If you call during business hours (Mon–Sat, 7 AM–7 PM), you'll get a response immediately — we can often give you a price estimate right over the phone. For form submissions, we aim to respond within 1 business hour during operating hours. Submissions received after 7 PM will be answered first thing the following morning.</div></div>
         </div>
 
         <div class="faq-item">
           <button class="faq-question" aria-expanded="false">
             Do I need to be home for the estimate?
-            <span class="faq-icon" aria-hidden="true"></span>
+            <span class="faq-chevron" aria-hidden="true">&#9660;</span>
           </button>
-          <div class="faq-answer">
-            <p>For a phone or online quote, no — just describe what you have and we can provide a ballpark. For a firm, binding quote on larger jobs, we may schedule a brief on-site visit. For most standard jobs (furniture, appliances, garage cleanouts), we can quote based on your description and confirm the final price before we start on the day of service.</p>
-          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">For a phone or online quote, no — just describe what you have and we can provide a ballpark. For a firm, binding quote on larger jobs, we may schedule a brief on-site visit. For most standard jobs (furniture, appliances, garage cleanouts), we can quote based on your description and confirm the final price before we start on the day of service.</div></div>
         </div>
 
         <div class="faq-item">
           <button class="faq-question" aria-expanded="false">
             Can I get same-day service?
-            <span class="faq-icon" aria-hidden="true"></span>
+            <span class="faq-chevron" aria-hidden="true">&#9660;</span>
           </button>
-          <div class="faq-answer">
-            <p>Yes, same-day service is often available if you contact us by noon. We serve Royse City, Caddo Mills, Rockwall, Heath, Fate, Greenville, and surrounding areas, so availability depends on where you're located and our current schedule. Call 469-534-3392 early in the day for the best chance of same-day pickup.</p>
-          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">Yes, same-day service is often available if you contact us by noon. We serve Royse City, Caddo Mills, Rockwall, Heath, Fate, Greenville, and surrounding areas, so availability depends on where you're located and our current schedule. Call 469-534-3392 early in the day for the best chance of same-day pickup.</div></div>
         </div>
 
         <div class="faq-item">
           <button class="faq-question" aria-expanded="false">
             What happens to my junk after pickup?
-            <span class="faq-icon" aria-hidden="true"></span>
+            <span class="faq-chevron" aria-hidden="true">&#9660;</span>
           </button>
-          <div class="faq-answer">
-            <p>We sort everything after pickup. Items in good condition are donated to local charities or organizations. Materials like metal, cardboard, and electronics are recycled at certified facilities. Only what can't be recycled or donated goes to the landfill — our goal is to divert as much as possible from the waste stream.</p>
-          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">We sort everything after pickup. Items in good condition are donated to local charities or organizations. Materials like metal, cardboard, and electronics are recycled at certified facilities. Only what can't be recycled or donated goes to the landfill — our goal is to divert as much as possible from the waste stream.</div></div>
         </div>
 
         <div class="faq-item">
           <button class="faq-question" aria-expanded="false">
             How is pricing determined?
-            <span class="faq-icon" aria-hidden="true"></span>
+            <span class="faq-chevron" aria-hidden="true">&#9660;</span>
           </button>
-          <div class="faq-answer">
-            <p>Our pricing is based on the volume of junk you need removed — how much space it takes up in our truck. We charge by load size (minimum, quarter, half, three-quarter, or full truck). Additional factors include weight for heavy items, access difficulty (stairs, long carries), and any hazardous materials. We always give you the price before we start — no surprises.</p>
-          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">Our pricing is based on the volume of junk you need removed — how much space it takes up in our truck. We charge by load size (minimum, quarter, half, three-quarter, or full truck). Additional factors include weight for heavy items, access difficulty (stairs, long carries), and any hazardous materials. We always give you the price before we start — no surprises.</div></div>
         </div>
 
         <div class="faq-item">
           <button class="faq-question" aria-expanded="false">
             Do you serve areas outside Royse City?
-            <span class="faq-icon" aria-hidden="true"></span>
+            <span class="faq-chevron" aria-hidden="true">&#9660;</span>
           </button>
-          <div class="faq-answer">
-            <p>Absolutely. We serve a wide area including Caddo Mills, Rockwall, Heath, Fate, Greenville, Forney, Terrell, Wylie, Sachse, and many more communities within about 20–25 miles of Royse City. Check our <a href="service-areas.html">service areas page</a> for the full list, or just call and we'll let you know right away if we cover your location.</p>
-          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">Absolutely. We serve a wide area including Caddo Mills, Rockwall, Heath, Fate, Greenville, Forney, Terrell, Wylie, Sachse, and many more communities within about 20–25 miles of Royse City. Check our <a href="service-areas.html">service areas page</a> for the full list, or just call and we'll let you know right away if we cover your location.</div></div>
         </div>
 
       </div>
@@ -637,15 +629,15 @@
             <strong>Satellite Office</strong>
             <p>118 E Main Street<br>Royse City, TX 75189</p>
             <strong>Headquarters</strong>
-            <p>2346 FM 35<br>Caddo Mills, TX 75135</p>
+            <p>2346 FM 36<br>Caddo Mills, TX 75135</p>
             <strong>Hours</strong>
             <p>Mon – Sat: 7:00 AM – 7:00 PM</p>
           </div>
         </div>
       </div>
       <div class="footer-bottom">
-        <p><span id="current-year"></span> Royse City Junk Removal | An I30 Builders Company. All rights reserved.</p>
-        <div class="footer-legal"><a href="sitemap.xml">Sitemap</a></div>
+        <p>&copy; <span id="current-year"></span> Royse City Junk Removal | An I30 Builders Company. All rights reserved.</p>
+        <div class="footer-legal"><a href="privacy-policy.html">Privacy Policy</a> <a href="sitemap.xml">Sitemap</a></div>
       </div>
     </div>
   </footer>
