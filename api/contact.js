@@ -2,7 +2,7 @@
 // Powered by Resend | roysecityjunkremoval.com
 // Environment variables needed:
 //   RESEND_API_KEY  — from resend.com dashboard
-//   RESEND_FROM     — verified sender e.g. "Royse City Junk Removal <noreply@roysecityjunkremoval.com>"
+//   RESEND_FROM     — verified sender e.g. "Royse City Junk Removal <noreply@i30builders.com>"
 //                     (use "Royse City Junk Removal <onboarding@resend.dev>" before domain verified)
 //   REDIS_URL       — Redis connection string for rate limiting
 

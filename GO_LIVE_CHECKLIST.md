@@ -5,7 +5,7 @@
 Set these in Vercel Project Settings > Environment Variables:
 
 - `RESEND_API_KEY` = your Resend API key
-- `RESEND_FROM` = verified sender (example: `Royse City Junk Removal <noreply@roysecityjunkremoval.com>`)
+- `RESEND_FROM` = verified sender (example: `Royse City Junk Removal <noreply@i30builders.com>`)
 - `NOTIFY_EMAIL` = inbox for new leads (example: `sales@i30builders.com`)
 
 ## 2) Microsoft Ads UET tag
