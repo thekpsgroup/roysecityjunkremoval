@@ -64,7 +64,7 @@ body {
 
 .phone-cta {
   background: var(--white);
-  color: var(--primary);
+  color: var(--dark);
   padding: 16px 34px;
   font-size: clamp(22px, 3.5vw, 30px);
   font-weight: 900;
@@ -174,7 +174,7 @@ body {
 .submit-btn {
   width: 100%;
   background: var(--primary);
-  color: var(--white);
+  color: var(--dark);
   border: none;
   padding: 17px;
   font-size: 17px;
@@ -189,6 +189,7 @@ body {
 
 .submit-btn:hover {
   background: var(--primary-dark);
+  color: var(--dark);
   transform: translateY(-1px);
   box-shadow: 0 16px 32px rgba(77,142,44,0.34);
 }
@@ -303,7 +304,7 @@ body {
 
 .step-number {
   background: var(--primary);
-  color: var(--white);
+  color: var(--dark);
   width: 50px;
   height: 50px;
   border-radius: 50%;
