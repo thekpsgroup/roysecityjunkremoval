@@ -24,8 +24,8 @@
   --radius: 5px;
   --radius-lg: 8px;
   --radius-xl: 10px;
-  --font-heading: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
-  --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  --font-heading: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  --font-body: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
   --transition: 0.2s ease;
   --container: 1200px;
 }

@@ -4,6 +4,7 @@
   "description": "Royse City Junk Removal website - An I30 Builders Company",
   "private": true,
   "dependencies": {
+    "ioredis": "^5.4.1",
     "resend": "^4.0.0"
   },
   "engines": {

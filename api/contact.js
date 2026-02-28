@@ -4,34 +4,41 @@
 //   RESEND_API_KEY  — from resend.com dashboard
 //   RESEND_FROM     — verified sender e.g. "Royse City Junk Removal <noreply@roysecityjunkremoval.com>"
 //                     (use "Royse City Junk Removal <onboarding@resend.dev>" before domain verified)
+//   REDIS_URL       — Redis connection string for rate limiting
 
 const { Resend } = require('resend');
+const Redis = require('ioredis');
 
-// --- In-memory rate limiter (no dependencies) ---
-const rateLimit = (() => {
-  const hits = new Map();         // ip -> [timestamp, timestamp, ...]
-  const WINDOW_MS = 15 * 60 * 1000; // 15-minute window
-  const MAX_REQUESTS = 5;           // max submissions per window per IP
+// --- Redis-backed rate limiter (persists across serverless invocations) ---
+const RATE_LIMIT_WINDOW = 15 * 60; // 15 minutes in seconds
+const RATE_LIMIT_MAX = 5;          // max submissions per window per IP
 
-  // Prune stale entries every 10 minutes to prevent memory growth
-  setInterval(() => {
-    const now = Date.now();
-    for (const [ip, timestamps] of hits) {
-      const recent = timestamps.filter(t => now - t < WINDOW_MS);
-      if (recent.length === 0) hits.delete(ip);
-      else hits.set(ip, recent);
-    }
-  }, 10 * 60 * 1000).unref();
+let redis;
+function getRedis() {
+  if (!redis && process.env.REDIS_URL) {
+    redis = new Redis(process.env.REDIS_URL, {
+      maxRetriesPerRequest: 1,
+      connectTimeout: 3000,
+      lazyConnect: true,
+    });
+    redis.on('error', () => {}); // suppress unhandled errors; failures fall through gracefully
+  }
+  return redis;
+}
 
-  return function check(ip) {
-    const now = Date.now();
-    const timestamps = (hits.get(ip) || []).filter(t => now - t < WINDOW_MS);
-    if (timestamps.length >= MAX_REQUESTS) return false; // blocked
-    timestamps.push(now);
-    hits.set(ip, timestamps);
-    return true; // allowed
-  };
-})();
+async function rateLimit(ip) {
+  const client = getRedis();
+  if (!client) return true; // no Redis configured — allow through
+
+  try {
+    const key = `rl:contact:${ip}`;
+    const count = await client.incr(key);
+    if (count === 1) await client.expire(key, RATE_LIMIT_WINDOW);
+    return count <= RATE_LIMIT_MAX;
+  } catch {
+    return true; // Redis error — fail open so real users aren't blocked
+  }
+}
 
 const SERVICE_LABELS = {
   residential:   'Residential Junk Removal',
@@ -265,9 +272,9 @@ module.exports = async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
-  // Rate limit by IP
+  // Rate limit by IP (Redis-backed, persists across serverless invocations)
   const clientIp = (req.headers['x-forwarded-for'] || req.socket?.remoteAddress || '').split(',')[0].trim();
-  if (!rateLimit(clientIp)) {
+  if (!(await rateLimit(clientIp))) {
     return res.status(429).json({ error: 'Too many requests. Please try again later or call us at 469-534-3392.' });
   }
 
