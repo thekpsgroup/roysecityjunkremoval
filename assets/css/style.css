@@ -1222,7 +1222,7 @@ p:last-child { margin-bottom: 0; }
   z-index: 1;
 }
 
-.hero-cta {
+.page-hero .hero-cta {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
@@ -1232,7 +1232,7 @@ p:last-child { margin-bottom: 0; }
   z-index: 1;
 }
 
-.hero-cta .btn {
+.page-hero .hero-cta .btn {
   min-width: 180px;
 }
 
@@ -2277,9 +2277,6 @@ p:last-child { margin-bottom: 0; }
 }
 .service-section.alternating {
   background: var(--light-bg);
-  margin: 0 -1.5rem;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
 }
 .service-section:last-child { border-bottom: none; }
 .service-section-inner {
@@ -4264,17 +4261,14 @@ textarea:focus-visible {
 }
 
 #hero-heading span {
-  display: inline !important;
+  display: block !important;
   color: inherit !important;
-}
-
-#hero-heading span::before {
-  content: ' — ';
+  margin-top: 0.35rem;
 }
 
 @media (min-width: 1024px) {
   #hero-heading {
-    white-space: nowrap;
+    white-space: normal;
     font-size: clamp(1.65rem, 2.8vw, 2.5rem) !important;
   }
 }
@@ -4655,4 +4649,129 @@ a.btn.btn-primary:visited,
 a.btn.btn-primary:hover,
 a.btn.btn-primary:focus-visible {
   color: var(--dark) !important;
+}
+
+/* =============================================
+   LAYOUT OVERFLOW & ALIGNMENT FIXES
+   ============================================= */
+
+/* Sidebar grids: collapse to single column on tablets */
+@media (max-width: 900px) {
+  .grid-main-aside,
+  .grid-2-sidebar {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .city-section-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .service-section-inner,
+  .service-section-inner.reverse {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar-sticky,
+  .sidebar-sticky-top,
+  .service-section-aside {
+    position: static;
+  }
+
+  .accept-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Stats bar: 2 columns on tablet, keep 2 on mobile */
+@media (max-width: 900px) {
+  .stats-bar-inner {
+    grid-template-columns: 1fr 1fr;
+  }
+  .stat-block {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+  .stat-block:nth-child(odd) {
+    border-right: 1px solid var(--border);
+  }
+  .stat-block:nth-child(n+3) {
+    border-bottom: none;
+  }
+}
+
+/* Pricing grid: 2 columns on tablet */
+@media (max-width: 1000px) {
+  .pricing-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Auto-fit grids: lower minimum on narrow viewports */
+@media (max-width: 640px) {
+  .grid-auto-fit-280 {
+    grid-template-columns: 1fr;
+  }
+
+  .grid-auto-fill-240,
+  .grid-auto-fill-220 {
+    grid-template-columns: 1fr;
+  }
+
+  .grid-two-col {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .social-proof-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .city-detail-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Footer grid: single column on small screens */
+@media (max-width: 640px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* Prevent all elements from exceeding viewport width */
+.container,
+.hero-inner,
+.hero-content,
+.footer-grid,
+.stats-bar-inner,
+.pricing-grid,
+.grid-auto-fit-280,
+.grid-main-aside,
+.grid-2-sidebar,
+.city-section-layout {
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+/* Ensure hero CTA buttons never overflow on homepage */
+.hero .hero-cta {
+  justify-content: center;
+}
+
+/* Fix contact grid on tablets */
+@media (max-width: 900px) {
+  .contact-page-grid {
+    grid-template-columns: 1fr;
+  }
 }
