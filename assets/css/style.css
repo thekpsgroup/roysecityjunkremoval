@@ -4775,3 +4775,56 @@ a.btn.btn-primary:focus-visible {
     grid-template-columns: 1fr;
   }
 }
+
+/* ===== Simple Service Cards (homepage) ===== */
+.service-card-simple {
+  display: block;
+  padding: 1.5rem;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.service-card-simple:hover {
+  border-color: var(--primary, #2563eb);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.service-card-simple h3 {
+  font-size: 1.1rem;
+  margin: 0 0 0.5rem;
+  color: var(--text-dark, #1a202c);
+}
+.service-card-simple p {
+  font-size: 0.9rem;
+  margin: 0;
+  color: var(--text-muted, #64748b);
+  line-height: 1.5;
+}
+
+/* ===== City Link Cards (homepage + service pages) ===== */
+.city-link-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 1.25rem;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--text-dark, #1a202c);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-align: center;
+  transition: border-color 0.15s, background 0.15s;
+}
+.city-link-card:hover {
+  border-color: var(--primary, #2563eb);
+  background: #f8fafc;
+}
+
+/* Alt-section city-link-card needs slight bg shift */
+.section-alt .city-link-card {
+  background: #fff;
+}
