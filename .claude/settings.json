@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -h \"href=\"\"/\" /c/Users/thekp/repos/roysecityjunkremoval/roysecityjunkremoval/*.html)",
+      "Bash(ls -1 /c/Users/thekp/repos/roysecityjunkremoval/roysecityjunkremoval/*.html)",
+      "Bash(xargs -I {} basename {} .html)",
+      "Bash(xargs ls:*)",
+      "Bash(grep -r \"index\\\\.html\" /c/Users/thekp/repos/roysecityjunkremoval/roysecityjunkremoval/*.html)",
+      "Bash(grep -h 'href=' /c/Users/thekp/repos/roysecityjunkremoval/roysecityjunkremoval/*.html)",
+      "Bash(grep -v \"^404$\\\\|^quote$\")",
+      "Bash(grep -h '<title>' /c/Users/thekp/repos/roysecityjunkremoval/roysecityjunkremoval/*.html)",
+      "Bash(grep -h '<meta name=\"\"\"\"description\"\"\"\"' /c/Users/thekp/repos/roysecityjunkremoval/roysecityjunkremoval/*.html)",
+      "Bash(sed 's/<[^>]*>//g')",
+      "Read(//c/Users/thekp/repos/roysecityjunkremoval/roysecityjunkremoval/**)",
+      "Bash(sed 's/.*content=\"\"\"\"//g')",
+      "Bash(sed 's/\"\"\"\".*//g')",
+      "Bash(grep -l 'noindex' /c/Users/thekp/repos/roysecityjunkremoval/roysecityjunkremoval/*.html)",
+      "Bash(grep -h 'hreflang' /c/Users/thekp/repos/roysecityjunkremoval/roysecityjunkremoval/*.html)"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\thekp\\repos\\roysecityjunkremoval\\roysecityjunkremoval"
+    ]
+  }
+}
