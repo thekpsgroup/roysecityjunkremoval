@@ -15,7 +15,18 @@
       "Bash(sed 's/.*content=\"\"\"\"//g')",
       "Bash(sed 's/\"\"\"\".*//g')",
       "Bash(grep -l 'noindex' /c/Users/thekp/repos/roysecityjunkremoval/roysecityjunkremoval/*.html)",
-      "Bash(grep -h 'hreflang' /c/Users/thekp/repos/roysecityjunkremoval/roysecityjunkremoval/*.html)"
+      "Bash(grep -h 'hreflang' /c/Users/thekp/repos/roysecityjunkremoval/roysecityjunkremoval/*.html)",
+      "Bash(grep -roh 'href=\"\"\"\"[^\"\"\"\"]*\"\"\"\"' /c/Users/thekp/repos/roysecityjunkremoval/roysecityjunkremoval/*.html)",
+      "Bash(grep -E '\\\\.\\(png|jpg|jpeg|gif|webp\\)$')",
+      "Bash(grep -E '\\\\.css$')",
+      "Bash(grep -l 'href=\"\"/quote\"\"' /c/Users/thekp/repos/roysecityjunkremoval/roysecityjunkremoval/*.html)",
+      "Bash(grep -n 'noindex' /c/Users/thekp/repos/roysecityjunkremoval/roysecityjunkremoval/*.html)",
+      "Bash(ls -la assets/images/*.png assets/images/*.jpg assets/images/*.webp)",
+      "Bash(sort -k5 -rn)",
+      "Bash(npx --help)",
+      "Bash(npx sharp-cli:*)",
+      "Bash(ls -la *.webp *.png)",
+      "Bash(grep -r \"hero-truck\\\\|before-after\" . --include=*.html --include=*.css -l)"
     ],
     "additionalDirectories": [
       "c:\\Users\\thekp\\repos\\roysecityjunkremoval\\roysecityjunkremoval"
