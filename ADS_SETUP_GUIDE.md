@@ -94,7 +94,7 @@ Headline 1: Same-Day Junk Removal
 Headline 2: Free Quote in 60 Seconds
 Headline 3: We Do All The Work
 
-Description: Get your space back. Call 469-534-3392 or fill out our form for an instant quote. Licensed, insured, fast.
+Description: Get your space back. Call 469-721-0145 or fill out our form for an instant quote. Licensed, insured, fast.
 ```
 
 ---
@@ -140,7 +140,7 @@ Headlines:
 - Free Quote - 60 Seconds
 - Licensed & Insured Team
 - We Handle All The Work
-- Call 469-534-3392 Today
+- Call 469-721-0145 Today
 
 Descriptions:
 - Get your space back today. Same-day service available in Royse City and surrounding areas.
@@ -210,7 +210,7 @@ The page automatically captures:
 - **Track in CRM:** Email to sales@i30builders.com
 
 ### Secondary Goals (Optional)
-- Phone click: `<a href="tel:+14695343392">`
+- Phone click: `<a href="tel:+14697210145">`
 - Page visit: Tracked automatically
 
 ---
@@ -287,7 +287,7 @@ The form sends data to `/api/contact` with these fields:
 {
   first_name: "John",
   last_name: "Smith",
-  phone: "469-534-3392",
+  phone: "469-721-0145",
   email: "john@example.com",
   address: "123 Main St",
   service: "furniture",
@@ -386,7 +386,7 @@ A: Yes - these are high-intent. Bid 25-50% higher than average.
 
 For help with setup:
 - Email: `sales@i30builders.com`
-- Phone: `469-534-3392`
+- Phone: `469-721-0145`
 - Landing Page Support: Check browser console (F12) for errors
 
 ---

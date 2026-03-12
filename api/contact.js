@@ -171,7 +171,7 @@ function buildNotificationHtml(d) {
           <td style="background:#f7fcf4;padding:16px 36px;text-align:center;border-top:1px solid #d2e8c4;">
             <p style="margin:0;color:#8a9e88;font-size:12px;">
               Royse City Junk Removal · Operated by I30 Builders LLC<br>
-              2346 FM 36, Caddo Mills, TX 75135 · 469-534-3392
+              2346 FM 36, Caddo Mills, TX 75135 · 469-721-0145
             </p>
           </td>
         </tr>
@@ -212,7 +212,7 @@ function buildConfirmationHtml(d) {
             <table width="100%" cellpadding="0" cellspacing="0">
               <tr>
                 <td align="center" style="background:#f7fcf4;border-radius:10px;padding:20px;border:1px solid #d2e8c4;">
-                  <a href="tel:+14695343392" style="display:block;color:#6CBE45;font-size:28px;font-weight:900;text-decoration:none;font-family:Arial,sans-serif;">📞 469-534-3392</a>
+                  <a href="tel:+14697210145" style="display:block;color:#6CBE45;font-size:28px;font-weight:900;text-decoration:none;font-family:Arial,sans-serif;">📞 469-721-0145</a>
                   <p style="margin:8px 0 0;color:#566052;font-size:13px;">Mon – Sat · 7:00 AM – 7:00 PM</p>
                 </td>
               </tr>
@@ -275,7 +275,7 @@ module.exports = async function handler(req, res) {
   // Rate limit by IP (Redis-backed, persists across serverless invocations)
   const clientIp = (req.headers['x-forwarded-for'] || req.socket?.remoteAddress || '').split(',')[0].trim();
   if (!(await rateLimit(clientIp))) {
-    return res.status(429).json({ error: 'Too many requests. Please try again later or call us at 469-534-3392.' });
+    return res.status(429).json({ error: 'Too many requests. Please try again later or call us at 469-721-0145.' });
   }
 
   try {
@@ -350,13 +350,13 @@ module.exports = async function handler(req, res) {
     const failed  = results.filter(r => r.status === 'rejected');
     if (failed.length === results.length) {
       console.error('All email sends failed:', failed.map(f => f.reason));
-      return res.status(500).json({ error: 'Failed to send email. Please call us at 469-534-3392.' });
+      return res.status(500).json({ error: 'Failed to send email. Please call us at 469-721-0145.' });
     }
 
     return res.status(200).json({ success: true, message: 'Quote request submitted successfully' });
 
   } catch (err) {
     console.error('Contact handler error:', err);
-    return res.status(500).json({ error: 'Server error. Please call us at 469-534-3392.' });
+    return res.status(500).json({ error: 'Server error. Please call us at 469-721-0145.' });
   }
 };

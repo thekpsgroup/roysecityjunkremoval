@@ -159,7 +159,7 @@
         if (res.ok && json.success) {
           showMsg(
             contactForm,
-            '✅ Request sent! We\'ll call you within 1 hour. For same-day service call 469-534-3392.',
+            '✅ Request sent! We\'ll call you within 1 hour. For same-day service call 469-721-0145.',
             'success'
           );
           contactForm.reset();
@@ -173,12 +173,12 @@
         } else {
           showMsg(
             contactForm,
-            json.error || 'Something went wrong. Please call us at 469-534-3392.',
+            json.error || 'Something went wrong. Please call us at 469-721-0145.',
             'error'
           );
         }
       } catch {
-        showMsg(contactForm, 'Network error. Please call us directly at 469-534-3392.', 'error');
+        showMsg(contactForm, 'Network error. Please call us directly at 469-721-0145.', 'error');
       } finally {
         btn.innerHTML = originalHtml;
         btn.disabled  = false;

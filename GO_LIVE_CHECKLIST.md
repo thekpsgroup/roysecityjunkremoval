@@ -26,7 +26,7 @@ curl -X POST https://roysecityjunkremoval.com/api/contact \
   -d '{
     "first_name":"Test",
     "last_name":"Lead",
-    "phone":"4695343392",
+    "phone":"4697210145",
     "email":"you@example.com",
     "address":"Royse City, TX",
     "service":"residential",

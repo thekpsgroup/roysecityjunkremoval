@@ -27,7 +27,8 @@
       "Bash(npx sharp-cli:*)",
       "Bash(ls -la *.webp *.png)",
       "Bash(grep -r \"hero-truck\\\\|before-after\" . --include=*.html --include=*.css -l)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(grep -r \"facebook\\\\|twitter\\\\|instagram\\\\|linkedin\\\\|social\" c:/Users/thekp/repos/roysecityjunkremoval/roysecityjunkremoval/ --include=*.html --include=*.js)"
     ],
     "additionalDirectories": [
       "c:\\Users\\thekp\\repos\\roysecityjunkremoval\\roysecityjunkremoval"
