@@ -12,7 +12,7 @@
   --dark-secondary: #1a1a1a;
   --text: #1a1a1a;
   --text-light: #666666;
-  --text-muted: #888888;
+  --text-muted: #636363;
   --white: #ffffff;
   --off-white: #f8f8f6;
   --light-bg: #f4f4f2;
@@ -200,7 +200,7 @@ p:last-child { margin-bottom: 0; }
 
 .btn-outline {
   background: transparent;
-  color: var(--primary-dark);
+  color: #3a7222;
   border: 2px solid var(--primary);
 }
 
@@ -1070,7 +1070,8 @@ p:last-child { margin-bottom: 0; }
   outline-offset: 2px;
 }
 
-.footer-col h4 {
+.footer-col h4,
+.footer-heading {
   font-family: var(--font-heading);
   font-size: 0.85rem;
   font-weight: 700;
@@ -3746,7 +3747,7 @@ a.btn.btn-primary:focus-visible {
 .service-card-simple p {
   font-size: 0.9rem;
   margin: 0;
-  color: var(--text-muted, #64748b);
+  color: var(--text-muted, #636363);
   line-height: 1.5;
 }
 

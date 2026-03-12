@@ -18,7 +18,8 @@
   <link rel="preload" href="full-logo.png" as="image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Open+Sans:wght@400;600&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Open+Sans:wght@400;600&display=swap" /></noscript>
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
@@ -26,7 +27,7 @@
 
 <header class="site-header">
   <div class="container"><div class="header-inner">
-    <a href="/" class="logo-link"><img src="full-logo.png" alt="Royse City Junk Removal" width="220" height="56" loading="eager" /></a>
+    <a href="/" class="logo-link"><picture><source srcset="full-logo.webp" type="image/webp" /><img src="full-logo.png" alt="Royse City Junk Removal" width="220" height="56" loading="eager" /></picture></a>
     <nav class="main-nav" aria-label="Main navigation">
       <a href="/">Home</a>
       <a href="/services">Services</a>
