@@ -161,6 +161,12 @@ p:last-child { margin-bottom: 0; }
   white-space: nowrap;
 }
 
+.btn svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
 .btn-primary {
   background: var(--primary);
   color: var(--dark);
@@ -817,13 +823,41 @@ p:last-child { margin-bottom: 0; }
   align-items: center;
   gap: 0.6rem;
   font-family: var(--font-heading);
-  font-size: 1.5rem;
+  font-size: clamp(1.5rem, 4vw, 2rem);
   font-weight: 800;
   color: var(--primary);
   margin-bottom: 1.5rem;
   justify-content: center;
   position: relative;
   z-index: 1;
+}
+
+.cta-phone a {
+  text-decoration: none;
+}
+
+.cta-phone a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 2px;
+}
+
+.cta-phone-icon {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.cta-phone-icon.ring {
+  animation: phone-ring 0.8s ease-in-out 1;
+}
+
+@keyframes phone-ring {
+  0%, 100% { transform: rotate(0deg); }
+  15% { transform: rotate(8deg); }
+  30% { transform: rotate(-6deg); }
+  45% { transform: rotate(4deg); }
+  60% { transform: rotate(0deg); }
 }
 
 .cta-phone-link {
@@ -987,8 +1021,16 @@ p:last-child { margin-bottom: 0; }
   font-size: 1.3rem;
   font-weight: 800;
   color: var(--primary);
-  display: block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
   margin-bottom: 0.25rem;
+}
+
+.footer-phone svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
 }
 
 .footer-phone:hover { color: var(--primary-light); }

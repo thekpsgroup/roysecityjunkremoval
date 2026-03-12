@@ -268,6 +268,23 @@
   }
 
   /* ===========================
+     CTA Phone Icon — ring once on scroll
+  =========================== */
+  if ('IntersectionObserver' in window) {
+    const phoneIcons = document.querySelectorAll('.cta-phone-icon');
+    const phoneObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('ring');
+          phoneObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    phoneIcons.forEach(el => phoneObserver.observe(el));
+  }
+
+  /* ===========================
      Phone Click Tracking (GA4)
   =========================== */
   document.querySelectorAll('a[href^="tel:"]').forEach(link => {
