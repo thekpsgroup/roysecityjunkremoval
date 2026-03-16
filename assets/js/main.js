@@ -7,6 +7,35 @@
   'use strict';
 
   /* ===========================
+     Meta Pixel Utilities
+  =========================== */
+  const FB_PIXEL_ID = '1677306806969912';
+
+  function genEventId(prefix) {
+    const tag = (prefix || 'eid') + '_';
+    if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {
+      return tag + crypto.randomUUID();
+    }
+    return tag + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2, 10);
+  }
+
+  function readFbCookie(name) {
+    try {
+      const m = document.cookie.match('(?:^|;)\\s*' + name + '=([^;]*)');
+      return m ? decodeURIComponent(m[1]) : '';
+    } catch (_) { return ''; }
+  }
+
+  function normPhone(ph) {
+    const d = (ph || '').replace(/\D/g, '');
+    return d.length === 10 ? '1' + d : d;
+  }
+
+  // Capture landing time + fbclid at page load for accurate fbc construction
+  const _fbLandingTime    = Date.now();
+  const _fbclidAtLanding  = new URLSearchParams(window.location.search).get('fbclid') || '';
+
+  /* ===========================
      Sticky Header
   =========================== */
   const header = document.querySelector('.site-header');
@@ -144,15 +173,43 @@
       const data = {};
       new FormData(contactForm).forEach((val, key) => { data[key] = val; });
 
+      // Capture UTM and click IDs for attribution parity with quote.html
+      const _p = new URLSearchParams(window.location.search);
+      data.utm_source   = _p.get('utm_source')   || 'direct';
+      data.utm_medium   = _p.get('utm_medium')   || 'none';
+      data.utm_campaign = _p.get('utm_campaign') || 'none';
+      if (_p.get('utm_term'))    data.utm_term    = _p.get('utm_term');
+      if (_p.get('utm_content')) data.utm_content = _p.get('utm_content');
+      if (_p.get('gclid'))       data.gclid       = _p.get('gclid');
+      if (_p.get('msclkid'))     data.msclkid     = _p.get('msclkid');
+      if (_p.get('fbclid'))      data.fbclid      = _p.get('fbclid');
+
+      // Source + URL for CAPI event_source_url and deduplication
+      data.form_source = 'contact';
+      data.page_url    = window.location.href;
+
+      // Meta Pixel attribution — event ID forwarded to server for Conversions API deduplication
+      const _fbEventId = genEventId('lead');
+      data.fb_event_id = _fbEventId;
+      data.fbp         = readFbCookie('_fbp');
+      data.fbc         = readFbCookie('_fbc') ||
+                         (_fbclidAtLanding ? 'fb.1.' + _fbLandingTime + '.' + _fbclidAtLanding : '');
+
       btn.innerHTML = '<span style="opacity:.7">Sending…</span>';
       btn.disabled  = true;
 
       try {
+        const _ac  = new AbortController();
+        const _tid = setTimeout(() => _ac.abort(), 15000);
+
         const res = await fetch('/api/contact', {
           method:  'POST',
           headers: { 'Content-Type': 'application/json' },
           body:    JSON.stringify(data),
+          signal:  _ac.signal,
         });
+
+        clearTimeout(_tid);
 
         const json = await res.json().catch(() => ({}));
 
@@ -167,8 +224,24 @@
           if (typeof gtag !== 'undefined') {
             gtag('event', 'form_submit', {
               event_category: 'Contact',
-              event_label: data['service'] || 'unknown',
+              event_label: data.service || 'unknown',
             });
+          }
+          if (typeof fbq !== 'undefined') {
+            try {
+              fbq('init', FB_PIXEL_ID, {
+                em: (data.email      || '').toLowerCase().trim(),
+                ph: normPhone(data.phone),
+                fn: (data.first_name || '').toLowerCase().trim(),
+                ln: (data.last_name  || '').toLowerCase().trim(),
+              });
+              fbq('track', 'Lead', {
+                content_category: 'Contact Form',
+                content_name: data.service || 'general',
+                value: 150,
+                currency: 'USD',
+              }, { eventID: _fbEventId });
+            } catch (_fbErr) {}
           }
         } else {
           showMsg(
@@ -285,18 +358,42 @@
   }
 
   /* ===========================
-     Phone Click Tracking (GA4)
+     Phone Click Tracking (GA4 + Meta Pixel)
+     Uses event delegation — catches static and dynamically injected tel: links
   =========================== */
-  document.querySelectorAll('a[href^="tel:"]').forEach(link => {
-    link.addEventListener('click', () => {
-      if (typeof gtag !== 'undefined') {
-        gtag('event', 'phone_call', {
-          event_category: 'Contact',
-          event_label: link.textContent.trim(),
-        });
-      }
-    });
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('a[href^="tel:"]');
+    if (!link) return;
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'phone_call', {
+        event_category: 'Contact',
+        event_label: link.textContent.trim(),
+      });
+    }
+    if (typeof fbq !== 'undefined') {
+      try {
+        fbq('track', 'Contact', {}, { eventID: genEventId('contact') });
+      } catch (_fbErr) {}
+    }
   });
+
+  /* ===========================
+     Meta Pixel — ViewContent on service & area pages
+     Fires on any page whose path ends with -tx (all service/area pages)
+     Powers intent-based audiences for retargeting and lookalikes
+  =========================== */
+  if (/-tx(\.html)?$/.test(window.location.pathname) && typeof fbq !== 'undefined') {
+    try {
+      const _h1   = document.querySelector('h1');
+      const _slug = window.location.pathname.split('/').pop().replace(/\.html$/, '');
+      fbq('track', 'ViewContent', {
+        content_ids:      [_slug],
+        content_name:     _h1 ? _h1.textContent.trim() : document.title,
+        content_category: 'Junk Removal Service',
+        content_type:     'product',
+      });
+    } catch (_fbErr) {}
+  }
 
   /* ===========================
      Dynamic Year in Footer

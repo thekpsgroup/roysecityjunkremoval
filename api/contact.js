@@ -1,13 +1,74 @@
 // Royse City Junk Removal — Contact Form Handler
 // Powered by Resend | roysecityjunkremoval.com
 // Environment variables needed:
-//   RESEND_API_KEY  — from resend.com dashboard
-//   RESEND_FROM     — verified sender e.g. "Royse City Junk Removal <noreply@i30builders.com>"
-//                     (use "Royse City Junk Removal <onboarding@resend.dev>" before domain verified)
-//   REDIS_URL       — Redis connection string for rate limiting
+//   RESEND_API_KEY       — from resend.com dashboard
+//   RESEND_FROM          — verified sender e.g. "Royse City Junk Removal <noreply@i30builders.com>"
+//   REDIS_URL            — Redis connection string for rate limiting
+//   META_CAPI_TOKEN      — Meta System User access token (enables Conversions API)
+//   META_TEST_EVENT_CODE — (optional) test event code from Meta Events Manager
 
 const { Resend } = require('resend');
-const Redis = require('ioredis');
+const Redis      = require('ioredis');
+const crypto     = require('crypto');
+
+// --- Meta Conversions API ---
+const FB_PIXEL_ID = '1677306806969912';
+
+function sha256(value) {
+  if (!value) return undefined;
+  return crypto.createHash('sha256').update(String(value)).digest('hex');
+}
+
+function normPhoneServer(ph) {
+  const d = (ph || '').replace(/\D/g, '');
+  return d.length === 10 ? '1' + d : d;
+}
+
+async function sendCapiEvent({
+  accessToken, testEventCode,
+  eventName, eventId, eventTime,
+  eventSourceUrl, ipAddress, userAgent,
+  email, phone, firstName, lastName, fbp, fbc,
+  customData,
+}) {
+  const userData = {};
+  if (email)     userData.em = sha256(email.toLowerCase().trim());
+  if (phone)     userData.ph = sha256(normPhoneServer(phone));
+  if (firstName) userData.fn = sha256(firstName.toLowerCase().trim());
+  if (lastName)  userData.ln = sha256(lastName.toLowerCase().trim());
+  if (ipAddress) userData.client_ip_address = ipAddress;
+  if (userAgent) userData.client_user_agent = userAgent;
+  if (fbp)       userData.fbp = fbp; // cookie value — not hashed per Meta spec
+  if (fbc)       userData.fbc = fbc; // cookie value — not hashed per Meta spec
+
+  const payload = {
+    data: [{
+      event_name:       eventName,
+      event_time:       eventTime,
+      event_id:         eventId,
+      action_source:    'website',
+      event_source_url: eventSourceUrl,
+      user_data:        userData,
+      custom_data:      customData,
+    }],
+  };
+  if (testEventCode) payload.test_event_code = testEventCode;
+
+  const url = `https://graph.facebook.com/v21.0/${FB_PIXEL_ID}/events?access_token=${encodeURIComponent(accessToken)}`;
+
+  const capiRes = await fetch(url, {
+    method:  'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body:    JSON.stringify(payload),
+    signal:  AbortSignal.timeout(8000),
+  });
+
+  const json = await capiRes.json().catch(() => ({}));
+  if (!capiRes.ok) {
+    throw new Error(`CAPI HTTP ${capiRes.status}: ${JSON.stringify(json?.error ?? json)}`);
+  }
+  return json;
+}
 
 // --- Redis-backed rate limiter (persists across serverless invocations) ---
 const RATE_LIMIT_WINDOW = 15 * 60; // 15 minutes in seconds
@@ -142,11 +203,23 @@ function buildNotificationHtml(d) {
                 </td>
               </tr>` : ''}
               <tr>
-                <td style="padding:10px 0;">
+                <td style="padding:10px 0;${(d.utmSource && d.utmSource !== 'direct') || d.fbclid || d.gclid || d.msclkid ? 'border-bottom:1px solid #eef5ea;' : ''}">
                   <span style="color:#6b8a60;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Job Description</span><br>
-                  <p style="color:#2a3328;font-size:15px;line-height:1.6;margin:6px 0 0;background:#f7fcf4;padding:12px;border-radius:8px;border-left:3px solid #6CBE45;">${escapeHtml(d.description)}</p>
+                  <p style="color:#2a3328;font-size:15px;line-height:1.6;margin:6px 0 0;background:#f7fcf4;padding:12px;border-radius:8px;border-left:3px solid #6CBE45;white-space:pre-wrap;">${escapeHtml(d.description)}</p>
                 </td>
               </tr>
+              ${(d.utmSource && d.utmSource !== 'direct') || d.fbclid || d.gclid || d.msclkid ? `
+              <tr>
+                <td style="padding:10px 0;">
+                  <span style="color:#6b8a60;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Traffic Source</span><br>
+                  <span style="color:#000000;font-size:14px;">${escapeHtml(d.utmSource || 'direct')} / ${escapeHtml(d.utmMedium || 'none')}${d.utmCampaign ? ' &mdash; ' + escapeHtml(d.utmCampaign) : ''}</span>
+                  ${d.utmTerm    ? `<br><span style="color:#6b8a60;font-size:12px;">Keyword: ${escapeHtml(d.utmTerm)}</span>` : ''}
+                  ${d.utmContent ? `<br><span style="color:#6b8a60;font-size:12px;">Content: ${escapeHtml(d.utmContent)}</span>` : ''}
+                  ${d.fbclid  ? `<br><span style="color:#6b8a60;font-size:12px;">&#x1F4F1; Facebook Ad click (fbclid present)</span>` : ''}
+                  ${d.gclid   ? `<br><span style="color:#6b8a60;font-size:12px;">&#x1F50D; Google Ad click (gclid present)</span>` : ''}
+                  ${d.msclkid ? `<br><span style="color:#6b8a60;font-size:12px;">&#x1F4BB; Microsoft Ad click (msclkid present)</span>` : ''}
+                </td>
+              </tr>` : ''}
             </table>
           </td>
         </tr>
@@ -291,10 +364,28 @@ module.exports = async function handler(req, res) {
       timing      = '',
       website     = '',  // honeypot field — bots fill this, humans leave it blank
       consent_contact: consentContact = '',
+      // Attribution & Meta Pixel Conversions API fields
+      utm_source:   utmSource   = '',
+      utm_medium:   utmMedium   = '',
+      utm_campaign: utmCampaign = '',
+      utm_term:     utmTerm     = '',
+      utm_content:  utmContent  = '',
+      gclid         = '',
+      msclkid       = '',
+      fbclid        = '',
+      fb_event_id:  fbEventId   = '',
+      fbp           = '',
+      fbc           = '',
+      form_source:  formSource  = '',
+      page_url:     pageUrl     = '',
     } = body || {};
+
+    // Cap attribution string lengths — prevents oversized strings reaching the email
+    const capAttr = (s, n = 200) => String(s || '').slice(0, n);
 
     // Honeypot check — silently discard bot submissions
     if (website.trim()) {
+      console.log('[Honeypot] blocked ip=%s', clientIp);
       return res.status(200).json({ success: true });
     }
 
@@ -309,8 +400,17 @@ module.exports = async function handler(req, res) {
     if (String(consentContact).trim().toLowerCase() !== 'yes') missing.push('contact consent');
 
     if (missing.length) {
-      return res.status(400).json({ error: `Missing required fields: ${missing.join(', ')}` });
+      console.warn('[Validation] missing fields ip=%s fields=%s', clientIp, missing.join(', '));
+      return res.status(400).json({ error: 'Please fill in all required fields.' });
     }
+
+    // Server-side field length caps — client maxlength is easily bypassed
+    if (firstName.length  > 100) return res.status(400).json({ error: 'Invalid input.' });
+    if (lastName.length   > 100) return res.status(400).json({ error: 'Invalid input.' });
+    if (phone.length      >  30) return res.status(400).json({ error: 'Invalid input.' });
+    if (email.length      > 254) return res.status(400).json({ error: 'Invalid input.' });
+    if (address.length    > 300) return res.status(400).json({ error: 'Invalid input.' });
+    if (description.length > 600) return res.status(400).json({ error: 'Invalid input.' });
 
     if (!process.env.RESEND_API_KEY) {
       console.error('RESEND_API_KEY environment variable is not set');
@@ -321,35 +421,95 @@ module.exports = async function handler(req, res) {
 
     const fromAddress = process.env.RESEND_FROM || 'Royse City Junk Removal <onboarding@resend.dev>';
     const notifyTo    = process.env.NOTIFY_EMAIL || 'sales@i30builders.com';
+    const validEmail  = email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-    const d = { firstName, lastName, phone, email, address, service, description, timing };
+    const d = {
+      firstName, lastName, phone, email, address, service, description, timing,
+      utmSource:   capAttr(utmSource),
+      utmMedium:   capAttr(utmMedium),
+      utmCampaign: capAttr(utmCampaign),
+      utmTerm:     capAttr(utmTerm),
+      utmContent:  capAttr(utmContent),
+      gclid:       capAttr(gclid,   100),
+      msclkid:     capAttr(msclkid, 100),
+      fbclid:      capAttr(fbclid,  100),
+      fbEventId:   capAttr(fbEventId, 100),
+      fbp:         capAttr(fbp,     100),
+      fbc:         capAttr(fbc,     200),
+      formSource:  capAttr(formSource, 20),
+      pageUrl:     capAttr(pageUrl,    500),
+    };
 
-    // Fire both emails concurrently
-    const sends = [
+    if (d.fbEventId) {
+      console.log('[Meta] event_id=%s form=%s fbclid=%s',
+        d.fbEventId, d.formSource || 'unknown', d.fbclid ? '[present]' : 'none');
+    }
+
+    // Ad-platform tag for quick subject-line scanning
+    const platformTag = d.fbclid ? ' [FB]' : d.gclid ? ' [GGL]' : d.msclkid ? ' [MSFT]' : '';
+
+    // Build email sends
+    const emailSends = [
       resend.emails.send({
-        from:     fromAddress,
-        to:       [notifyTo],
-        subject:  `New Quote: ${firstName} ${lastName} — ${SERVICE_LABELS[service] || service} (${TIMING_LABELS[timing] || timing || 'Flexible'})`,
-        html:     buildNotificationHtml(d),
-        replyTo:  email || undefined,
+        from:    fromAddress,
+        to:      [notifyTo],
+        subject: `New Quote: ${firstName} ${lastName} — ${SERVICE_LABELS[service] || service} (${TIMING_LABELS[timing] || timing || 'Flexible'})${platformTag}`,
+        html:    buildNotificationHtml(d),
+        replyTo: validEmail ? email : undefined,
       }),
     ];
 
-    if (email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      sends.push(
+    if (validEmail) {
+      emailSends.push(
         resend.emails.send({
           from:    fromAddress,
           to:      [email],
-          subject: "We received your junk removal request — Royse City Junk Removal",
+          subject: 'We received your junk removal request — Royse City Junk Removal',
           html:    buildConfirmationHtml(d),
         })
       );
     }
 
-    const results = await Promise.allSettled(sends);
-    const failed  = results.filter(r => r.status === 'rejected');
-    if (failed.length === results.length) {
-      console.error('All email sends failed:', failed.map(f => f.reason));
+    // Meta Conversions API — runs concurrently with emails
+    // Failure is logged and silently swallowed; never blocks the success response
+    const capiToken   = process.env.META_CAPI_TOKEN;
+    const safePageUrl = /^https?:\/\//.test(d.pageUrl)
+      ? d.pageUrl
+      : `https://www.roysecityjunkremoval.com/`;
+
+    const capiPromise = capiToken
+      ? sendCapiEvent({
+          accessToken:    capiToken,
+          testEventCode:  process.env.META_TEST_EVENT_CODE || undefined,
+          eventName:      'Lead',
+          eventId:        d.fbEventId || `srv_${crypto.randomUUID()}`,
+          eventTime:      Math.floor(Date.now() / 1000),
+          eventSourceUrl: safePageUrl,
+          ipAddress:      clientIp,
+          userAgent:      req.headers['user-agent'] || '',
+          email, phone, firstName, lastName,
+          fbp: d.fbp,
+          fbc: d.fbc,
+          customData: {
+            currency:         'USD',
+            value:            150,
+            content_category: d.formSource === 'quote' ? 'Quote Form' : 'Contact Form',
+            content_name:     service || 'general',
+          },
+        })
+          .then(json => console.log('[CAPI] ok events_received=%d', json.events_received || 0))
+          .catch(err  => console.error('[CAPI] failed:', err.message))
+      : Promise.resolve();
+
+    // Await emails + CAPI in parallel
+    const [[...emailResults]] = await Promise.all([
+      Promise.allSettled(emailSends),
+      capiPromise,
+    ]);
+
+    const failedEmails = emailResults.filter(r => r.status === 'rejected');
+    if (failedEmails.length === emailResults.length) {
+      console.error('All email sends failed:', failedEmails.map(f => f.reason));
       return res.status(500).json({ error: 'Failed to send email. Please call us at 469-721-0145.' });
     }
 

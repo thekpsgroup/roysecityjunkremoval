@@ -81,8 +81,20 @@
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Open+Sans:wght@400;600&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Open+Sans:wght@400;600&display=swap" /></noscript>
   <link rel="stylesheet" href="assets/css/quote.css" />
+  <!-- Meta Pixel -->
+  <script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+  (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init','1677306806969912');
+  fbq('track','PageView');
+  </script>
+  <!-- End Meta Pixel -->
 </head>
 <body>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1677306806969912&ev=PageView&noscript=1"/></noscript>
 
   <section class="hero">
     <a href="/" class="logo-link" aria-label="Visit main homepage">
@@ -312,8 +324,41 @@
   </div>
 
   <script>
+    // Meta Pixel utilities (main.js not loaded on this page)
+    var FB_PIXEL_ID = '1677306806969912';
+    function genEventId(prefix) {
+      var tag = (prefix || 'eid') + '_';
+      if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {
+        return tag + crypto.randomUUID();
+      }
+      return tag + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2, 10);
+    }
+    function readFbCookie(name) {
+      try {
+        var m = document.cookie.match('(?:^|;)\\s*' + name + '=([^;]*)');
+        return m ? decodeURIComponent(m[1]) : '';
+      } catch (_) { return ''; }
+    }
+    function normPhone(ph) {
+      var d = (ph || '').replace(/\D/g, '');
+      return d.length === 10 ? '1' + d : d;
+    }
+
+    // Phone click tracking via delegation — catches static + dynamically injected tel: links
+    document.addEventListener('click', function(e) {
+      var link = e.target.closest('a[href^="tel:"]');
+      if (!link) return;
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'phone_call', { event_category: 'Contact', event_label: link.textContent.trim() });
+      }
+      if (typeof fbq !== 'undefined') {
+        try { fbq('track', 'Contact', {}, { eventID: genEventId('contact') }); } catch (_) {}
+      }
+    });
+
     // Get UTM parameters from URL - works with any ad platform
-    var urlParams = new URLSearchParams(window.location.search);
+    var urlParams    = new URLSearchParams(window.location.search);
+    var fbLandingTime = Date.now(); // captured at page load for accurate fbc construction
     var utmSource = urlParams.get('utm_source') || 'direct';
     var utmMedium = urlParams.get('utm_medium') || 'none';
     var utmCampaign = urlParams.get('utm_campaign') || 'none';
@@ -323,7 +368,8 @@
     var msclkid = urlParams.get('msclkid') || '';
     var fbclid = urlParams.get('fbclid') || '';
 
-    document.getElementById('quoteForm').addEventListener('submit', async function(e) {
+    var _qf = document.getElementById('quoteForm');
+    if (_qf) _qf.addEventListener('submit', async function(e) {
       e.preventDefault();
 
       var submitBtn = this.querySelector('.submit-btn');
@@ -341,6 +387,8 @@
       });
 
       if (data.website) {
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
         return;
       }
 
@@ -353,6 +401,16 @@
       if (gclid) data.gclid = gclid;
       if (msclkid) data.msclkid = msclkid;
       if (fbclid) data.fbclid = fbclid;
+
+      // Source + URL for CAPI event_source_url and deduplication
+      data.form_source = 'quote';
+      data.page_url    = window.location.href;
+
+      // Meta Pixel attribution — forward event ID + cookies so server can use Conversions API
+      var fbEventId    = genEventId('lead');
+      data.fb_event_id = fbEventId;
+      data.fbp         = readFbCookie('_fbp');
+      data.fbc         = readFbCookie('_fbc') || (fbclid ? 'fb.1.' + fbLandingTime + '.' + fbclid : '');
 
       try {
         var controller = new AbortController();
@@ -410,8 +468,26 @@
               'currency': 'USD'
             });
           }
+
+          // Meta Pixel Lead conversion (Advanced Matching + normalized PII + value + eventID)
+          if (typeof fbq !== 'undefined') {
+            try {
+              fbq('init', FB_PIXEL_ID, {
+                em: (data.email      || '').toLowerCase().trim(),
+                ph: normPhone(data.phone),
+                fn: (data.first_name || '').toLowerCase().trim(),
+                ln: (data.last_name  || '').toLowerCase().trim(),
+              });
+              fbq('track', 'Lead', {
+                content_category: 'Quote Form',
+                content_name: data.service || 'general',
+                value: 150,
+                currency: 'USD',
+              }, { eventID: fbEventId });
+            } catch (_fbErr) {}
+          }
         } else {
-          alert('Oops! Something went wrong. Please call us at 469-721-0145.');
+          alert((result && result.error) || 'Something went wrong. Please call us at 469-721-0145.');
           submitBtn.textContent = originalText;
           submitBtn.disabled = false;
         }
