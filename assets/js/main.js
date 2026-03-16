@@ -9,7 +9,7 @@
   /* ===========================
      Meta Pixel Utilities
   =========================== */
-  const FB_PIXEL_ID = '1677306806969912';
+  const FB_PIXEL_ID = '2040716276843820';
 
   function genEventId(prefix) {
     const tag = (prefix || 'eid') + '_';

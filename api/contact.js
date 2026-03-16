@@ -12,7 +12,7 @@ const Redis      = require('ioredis');
 const crypto     = require('crypto');
 
 // --- Meta Conversions API ---
-const FB_PIXEL_ID = '1677306806969912';
+const FB_PIXEL_ID = '2040716276843820';
 
 function sha256(value) {
   if (!value) return undefined;
