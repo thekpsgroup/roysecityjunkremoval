@@ -25,6 +25,8 @@ Scope reviewed: all `*.html`, `assets/js/main.js`, `api/contact.js`, `sitemap.xm
 7. Contact form field constraints (`maxlength`, tel pattern/inputmode) now better align with API-side validation.
 8. CSP in `vercel.json` updated to allow configured Meta Pixel script/connect endpoints.
 9. Root clutter reduced: operational markdown moved into `docs/`; unused assets removed.
+10. Quote-page trust proof wording aligned to reviewed proof baseline (`100+ verified reviews`).
+11. Microsoft UET consent now has an in-page user action flow on `quote.html` (accept/decline with persisted choice + `grantConsent()` call on accept).
 
 ### SEO
 1. **`quote.html` is intentionally blocked from indexing (`noindex, nofollow`)**.
@@ -38,18 +40,13 @@ Scope reviewed: all `*.html`, `assets/js/main.js`, `api/contact.js`, `sitemap.xm
    - Low-impact user-facing issue (mostly affects spam interactions), but worth hardening by restoring button state before early return.
 
 ### Lead Generation / Conversion
-4. **Evidence consistency conflict in social proof: “500+ happy customers” vs structured `reviewCount: 107`**.
-   - Quote page claims 500+ customers.
-   - Homepage structured data states reviewCount 107.
-
-5. **Address consistency is split across customer-facing pages and system emails (Royse City office + Caddo Mills HQ)**.
+4. **Address consistency is split across customer-facing pages and system emails (Royse City office + Caddo Mills HQ)**.
    - Website presents both addresses in multiple places; API email templates default to Caddo Mills address.
    - Not necessarily wrong, but this should be made explicit consistently to avoid trust confusion.
 
-6. **Microsoft Ads consent update function exists but no in-repo trigger was found**.
-   - `quote.html` sets UET consent default to denied and defines `grantConsent()` “call from cookie banner”.
-   - Repository search found no call site for `grantConsent()`.
-   - Result: ad storage may remain denied unless an external banner invokes it.
+5. **UET consent now has a call site on `quote.html`**.
+   - User-facing consent banner stores accept/decline choice in localStorage.
+   - Accept action invokes `grantConsent()` to switch Microsoft ad storage to granted.
 
 ### Visuals / Performance Signals
 7. **Primary site stylesheet is highly compressed and difficult to maintain directly (`assets/css/style.css`).**
@@ -74,6 +71,6 @@ Scope reviewed: all `*.html`, `assets/js/main.js`, `api/contact.js`, `sitemap.xm
 - Lighthouse/PageSpeed metrics (no local Chrome available for lighthouse CLI run).
 
 ## Recommended next actions
-1. Align trust proof numbers (review count vs “500+ happy customers”) across schema and on-page copy.
-2. Add/verify cookie-banner integration that explicitly invokes `grantConsent()` for Microsoft UET when user consents.
-3. Add a lightweight Lighthouse pass (mobile + desktop) once Chrome is available, then prioritize CLS/LCP opportunities.
+1. Keep trust-proof counts synchronized whenever schema `reviewCount` is updated.
+2. Add a lightweight Lighthouse pass (mobile + desktop) once Chrome is available, then prioritize CLS/LCP opportunities.
+3. Consider adding a shared header/footer template build step to reduce future cross-page drift.

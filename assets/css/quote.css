@@ -254,6 +254,51 @@ textarea:focus-visible {
   font-weight: 600;
 }
 
+.consent-banner {
+  position: fixed;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  z-index: 1200;
+  background: #111;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 12px;
+  padding: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.consent-banner p {
+  margin: 0 0 10px;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.consent-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.consent-btn {
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.consent-btn-accept {
+  background: var(--primary);
+  color: var(--dark);
+}
+
+.consent-btn-decline {
+  background: transparent;
+  border-color: rgba(255,255,255,0.35);
+  color: #fff;
+}
+
 .consent-note {
   display: flex;
   align-items: flex-start;
@@ -576,6 +621,16 @@ textarea:focus-visible {
 
 /* === Responsive === */
 @media (max-width: 768px) {
+  .consent-banner {
+    left: 10px;
+    right: 10px;
+    bottom: 78px;
+  }
+
+  .consent-actions {
+    flex-direction: column;
+  }
+
   .hero h1 {
     font-size: 30px;
   }

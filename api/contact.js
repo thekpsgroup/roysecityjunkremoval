@@ -244,7 +244,8 @@ function buildNotificationHtml(d) {
           <td style="background:#f7fcf4;padding:16px 36px;text-align:center;border-top:1px solid #d2e8c4;">
             <p style="margin:0;color:#8a9e88;font-size:12px;">
               Royse City Junk Removal · Operated by I30 Builders LLC<br>
-              2346 FM 36, Caddo Mills, TX 75135 · 469-721-0145
+              Satellite Office: 118 E Main Street, Royse City, TX 75189<br>
+              Headquarters: 2346 FM 36, Caddo Mills, TX 75135 · 469-721-0145
             </p>
           </td>
         </tr>
@@ -310,7 +311,8 @@ function buildConfirmationHtml(d) {
           <td style="background:#f7fcf4;padding:16px 36px;text-align:center;border-top:1px solid #d2e8c4;">
             <p style="margin:0;color:#8a9e88;font-size:12px;">
               © Royse City Junk Removal · Operated by I30 Builders LLC<br>
-              2346 FM 36, Caddo Mills, TX 75135
+              Satellite Office: 118 E Main Street, Royse City, TX 75189<br>
+              Headquarters: 2346 FM 36, Caddo Mills, TX 75135
             </p>
           </td>
         </tr>

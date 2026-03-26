@@ -68,7 +68,7 @@
 
   <title>Free Quote - Same-Day Junk Removal Royse City TX | 469-721-0145</title>
   <meta name="description" content="Get your free quote now! Same-day junk removal in Royse City, TX. We do all the work. No hidden fees. Call 469-721-0145 or request a quote in 60 seconds." />
-  <meta name="robots" content="noindex, nofollow" />
+  <meta name="robots" content="noindex, follow" />
   <link rel="canonical" href="https://www.roysecityjunkremoval.com/quote" />
 
   <meta property="og:type"        content="website" />
@@ -141,7 +141,7 @@
         <div class="badge">
           <div class="badge-icon">TOP</div>
           <h3>5-Star Rated</h3>
-          <p>500+ happy customers</p>
+          <p>100+ verified reviews</p>
         </div>
       </div>
     </div>
@@ -335,6 +335,14 @@
     <a href="tel:+14697210145">Call Now: 469-721-0145</a>
   </div>
 
+  <aside id="consent-banner" class="consent-banner" role="region" aria-label="Ad consent" hidden>
+    <p>We use ad cookies to measure campaign performance. You can accept or decline.</p>
+    <div class="consent-actions">
+      <button type="button" id="consent-accept" class="consent-btn consent-btn-accept">Accept</button>
+      <button type="button" id="consent-decline" class="consent-btn consent-btn-decline">Decline</button>
+    </div>
+  </aside>
+
   </main>
 
   <script>
@@ -521,6 +529,44 @@
       el.textContent = message || '';
       el.className = type === 'error' ? 'quote-message quote-message-error' : 'quote-message';
     }
+
+    function initConsentBanner() {
+      var banner = document.getElementById('consent-banner');
+      if (!banner) return;
+
+      var key = 'rcjr_uet_consent_v1';
+      var stored = '';
+      try { stored = localStorage.getItem(key) || ''; } catch (_) {}
+
+      if (stored === 'granted') {
+        if (typeof window.grantConsent === 'function') window.grantConsent();
+        return;
+      }
+
+      if (stored === 'denied') return;
+
+      banner.hidden = false;
+
+      var acceptBtn = document.getElementById('consent-accept');
+      var declineBtn = document.getElementById('consent-decline');
+
+      if (acceptBtn) {
+        acceptBtn.addEventListener('click', function() {
+          try { localStorage.setItem(key, 'granted'); } catch (_) {}
+          if (typeof window.grantConsent === 'function') window.grantConsent();
+          banner.hidden = true;
+        });
+      }
+
+      if (declineBtn) {
+        declineBtn.addEventListener('click', function() {
+          try { localStorage.setItem(key, 'denied'); } catch (_) {}
+          banner.hidden = true;
+        });
+      }
+    }
+
+    initConsentBanner();
   </script>
 
 </body>
