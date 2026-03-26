@@ -6,6 +6,7 @@ const ROOT = process.cwd();
 const DOMAIN = "https://www.roysecityjunkremoval.com";
 const TODAY = new Date().toISOString().slice(0, 10);
 const WRITE_SITEMAP = process.argv.includes("--write-sitemap");
+const LIVE_CHECK = process.argv.includes("--live");
 
 function read(filePath) {
   return fs.readFileSync(filePath, "utf8");
@@ -210,7 +211,7 @@ async function main() {
     fs.writeFileSync(sitemapXmlPath, buildSitemap(regenerated), "utf8");
   }
 
-  const liveChecks = await Promise.all(sitemapUrls.map((url) => headStatus(url)));
+  const liveChecks = LIVE_CHECK ? await Promise.all(sitemapUrls.map((url) => headStatus(url))) : [];
   const liveIssues = liveChecks.filter((r) => r.status !== 200);
 
   const robotsSitemapLineOk = /Sitemap:\s*https:\/\/www\.roysecityjunkremoval\.com\/sitemap\.xml/i.test(robots);
@@ -238,7 +239,7 @@ async function main() {
   reportLines.push(`- JSON-LD parse errors: ${jsonLdErrors.length}`);
   reportLines.push(`- Missing in sitemap: ${missingInSitemap.length}`);
   reportLines.push(`- Extra in sitemap: ${extraInSitemap.length}`);
-  reportLines.push(`- Live non-200 sitemap URLs: ${liveIssues.length}`);
+  reportLines.push(`- Live non-200 sitemap URLs: ${LIVE_CHECK ? liveIssues.length : "not run (use --live)"}`);
 
   for (const item of missingInSitemap) reportLines.push(`- Missing URL: ${item}`);
   for (const item of extraInSitemap) reportLines.push(`- Extra URL: ${item}`);
@@ -263,7 +264,7 @@ async function main() {
   console.log(`  json-ld errors: ${jsonLdErrors.length}`);
   console.log(`  missing in sitemap: ${missingInSitemap.length}`);
   console.log(`  extra in sitemap: ${extraInSitemap.length}`);
-  console.log(`  live non-200 URLs: ${liveIssues.length}`);
+  console.log(`  live non-200 URLs: ${LIVE_CHECK ? liveIssues.length : "not run"}`);
   console.log(`  images missing dimensions: ${imgDimensionIssues.length}`);
 
   const hasBlockingIssues =
@@ -271,7 +272,7 @@ async function main() {
     canonicalMismatches.length > 0 ||
     jsonLdErrors.length > 0 ||
     missingInSitemap.length > 0 ||
-    liveIssues.length > 0;
+    (LIVE_CHECK && liveIssues.length > 0);
 
   process.exitCode = hasBlockingIssues ? 2 : 0;
 }
