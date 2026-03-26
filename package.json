@@ -5,7 +5,9 @@
   "private": true,
   "scripts": {
     "css:build": "cleancss -O2 assets/css/style.src.css -o assets/css/style.css",
-    "css:watch": "cleancss -O2 assets/css/style.src.css -o assets/css/style.css --watch"
+    "css:watch": "cleancss -O2 assets/css/style.src.css -o assets/css/style.css --watch",
+    "seo:audit": "node scripts/seo-audit.mjs",
+    "seo:refresh": "node scripts/seo-audit.mjs --write-sitemap"
   },
   "dependencies": {
     "ioredis": "^5.4.1",

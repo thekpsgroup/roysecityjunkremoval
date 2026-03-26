@@ -108,7 +108,10 @@
 
   <section class="hero">
     <a href="/" class="logo-link" aria-label="Visit main homepage">
-      <img src="full-logo.png" alt="Royse City Junk Removal" class="logo" loading="eager" fetchpriority="high" decoding="async" />
+      <picture>
+        <source srcset="full-logo-sm.webp" type="image/webp" />
+        <img src="full-logo.png" alt="Royse City Junk Removal" class="logo" width="220" height="56" loading="eager" fetchpriority="high" decoding="async" />
+      </picture>
     </a>
     <h1>Get Your Space Back Today</h1>
     <p class="subheadline">Same-Day Junk Removal &bull; We Do All The Work &bull; No Hidden Fees</p>
@@ -117,7 +120,7 @@
 
     <p class="or-text">&mdash; Or Get Free Quote Below &mdash;</p>
 
-    <img src="assets/images/hero-truck-trailer.webp" alt="Royse City Junk Removal Truck and Trailer" class="hero-image" loading="eager" fetchpriority="high" decoding="async" />
+    <img src="assets/images/hero-truck-trailer.webp" alt="Royse City Junk Removal Truck and Trailer" class="hero-image" width="1200" height="660" loading="eager" fetchpriority="high" decoding="async" />
   </section>
 
   <section class="trust-section">
@@ -158,27 +161,27 @@
 
         <div class="form-group">
           <label for="firstName">First Name *</label>
-          <input type="text" id="firstName" name="first_name" required placeholder="John" autocomplete="given-name" maxlength="40" />
+          <input type="text" id="firstName" name="first_name" required placeholder="John" autocomplete="given-name" maxlength="100" />
         </div>
 
         <div class="form-group">
           <label for="lastName">Last Name *</label>
-          <input type="text" id="lastName" name="last_name" required placeholder="Smith" autocomplete="family-name" maxlength="40" />
+          <input type="text" id="lastName" name="last_name" required placeholder="Smith" autocomplete="family-name" maxlength="100" />
         </div>
 
         <div class="form-group">
           <label for="phone">Phone Number *</label>
-          <input type="tel" id="phone" name="phone" required placeholder="469-721-0145" autocomplete="tel" inputmode="tel" pattern="[0-9()\-\s+]{10,20}" />
+          <input type="tel" id="phone" name="phone" required placeholder="469-721-0145" autocomplete="tel" inputmode="tel" pattern="[0-9()\-\s+]{10,30}" maxlength="30" />
         </div>
 
         <div class="form-group">
           <label for="email">Email Address</label>
-          <input type="email" id="email" name="email" placeholder="john@example.com" autocomplete="email" maxlength="80" />
+          <input type="email" id="email" name="email" placeholder="john@example.com" autocomplete="email" maxlength="254" />
         </div>
 
         <div class="form-group">
           <label for="address">Street Address *</label>
-          <input type="text" id="address" name="address" required placeholder="123 Main Street" autocomplete="street-address" maxlength="120" />
+          <input type="text" id="address" name="address" required placeholder="123 Main Street" autocomplete="street-address" maxlength="300" />
         </div>
 
         <div class="form-group">
@@ -258,13 +261,13 @@
       <h2>See The Difference We Make</h2>
       <div class="before-after-gallery">
         <div class="before-after-item">
-          <img src="assets/images/before-after-3.webp" alt="Before and After Junk Removal - Property Cleanout" loading="lazy" decoding="async" />
+          <img src="assets/images/before-after-3.webp" alt="Before and After Junk Removal - Property Cleanout" width="1200" height="660" loading="lazy" decoding="async" />
         </div>
         <div class="before-after-item">
-          <img src="assets/images/before-after-1.webp" alt="Before and After Junk Removal - Driveway Transformation" loading="lazy" decoding="async" />
+          <img src="assets/images/before-after-1.webp" alt="Before and After Junk Removal - Driveway Transformation" width="1200" height="660" loading="lazy" decoding="async" />
         </div>
         <div class="before-after-item">
-          <img src="assets/images/before-after-2.webp" alt="Before and After Junk Removal - Garage Cleanout" loading="lazy" decoding="async" />
+          <img src="assets/images/before-after-2.webp" alt="Before and After Junk Removal - Garage Cleanout" width="1200" height="660" loading="lazy" decoding="async" />
         </div>
       </div>
     </div>
