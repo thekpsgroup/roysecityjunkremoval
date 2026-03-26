@@ -15,7 +15,7 @@
 ## IMAGE SPECIFICATIONS FOR ADS
 
 ### Primary Hero Image
-**File:** `hero-truck-trailer.png`
+**File:** `assets/images/hero-truck-trailer.webp`
 **Current Size:** 1.03 MB
 
 #### Recommended Ad Image Versions:
@@ -40,9 +40,9 @@
 
 ### Before/After Images
 **Files:**
-- `before-after-1.png` (0.81 MB)
-- `before-after-2.png` (0.82 MB)
-- `before-after-3.png` (1.21 MB)
+- `assets/images/before-after-1.webp`
+- `assets/images/before-after-2.webp`
+- `assets/images/before-after-3.webp`
 
 **Ad Sizes:**
 - Same specifications as hero image above

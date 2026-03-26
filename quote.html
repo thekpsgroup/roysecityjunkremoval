@@ -66,13 +66,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-  <title>Free Quote - Same-Day Junk Removal in Royse City, TX | 469-721-0145</title>
+  <title>Free Quote - Same-Day Junk Removal Royse City TX | 469-721-0145</title>
   <meta name="description" content="Get your free quote now! Same-day junk removal in Royse City, TX. We do all the work. No hidden fees. Call 469-721-0145 or request a quote in 60 seconds." />
   <meta name="robots" content="noindex, nofollow" />
+  <link rel="canonical" href="https://www.roysecityjunkremoval.com/quote" />
 
   <meta property="og:type"        content="website" />
   <meta property="og:title"       content="Free Quote - Same-Day Junk Removal in Royse City" />
   <meta property="og:description" content="Get your free quote now! Same-day junk removal." />
+  <meta property="og:url"         content="https://www.roysecityjunkremoval.com/quote" />
+  <meta property="og:image"       content="https://www.roysecityjunkremoval.com/full-logo.png" />
+  <meta name="twitter:card"       content="summary_large_image" />
+  <meta name="twitter:title"      content="Free Quote - Same-Day Junk Removal in Royse City" />
+  <meta name="twitter:description" content="Get your free quote now! Same-day junk removal." />
+  <meta name="twitter:image"      content="https://www.roysecityjunkremoval.com/full-logo.png" />
 
   <link rel="icon" type="image/png" href="small-logo.png" />
 
@@ -94,7 +101,10 @@
   <!-- End Meta Pixel -->
 </head>
 <body>
-<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2040716276843820&ev=PageView&noscript=1"/></noscript>
+<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=2040716276843820&ev=PageView&noscript=1"/></noscript>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <main id="main-content">
 
   <section class="hero">
     <a href="/" class="logo-link" aria-label="Visit main homepage">
@@ -107,7 +117,7 @@
 
     <p class="or-text">&mdash; Or Get Free Quote Below &mdash;</p>
 
-    <img src="assets/images/hero-truck-trailer.png" alt="Royse City Junk Removal Truck and Trailer" class="hero-image" loading="eager" fetchpriority="high" decoding="async" />
+    <img src="assets/images/hero-truck-trailer.webp" alt="Royse City Junk Removal Truck and Trailer" class="hero-image" loading="eager" fetchpriority="high" decoding="async" />
   </section>
 
   <section class="trust-section">
@@ -141,6 +151,7 @@
     <div class="form-container">
       <h2>Get Your Free Quote</h2>
       <p class="form-subtitle">Takes less than 60 seconds &bull; No obligation</p>
+      <p class="quote-meta">Most requests receive a response within 1 hour during business hours.</p>
 
       <form id="quoteForm">
         <input type="hidden" name="website" value="" />
@@ -214,6 +225,7 @@
         <p class="privacy-note">
           We respect your privacy. Your information will never be shared.
         </p>
+        <div id="quote-message" class="quote-message" role="alert" aria-live="polite"></div>
       </form>
     </div>
   </section>
@@ -246,13 +258,13 @@
       <h2>See The Difference We Make</h2>
       <div class="before-after-gallery">
         <div class="before-after-item">
-          <img src="assets/images/before-after-3.png" alt="Before and After Junk Removal - Property Cleanout" loading="lazy" decoding="async" />
+          <img src="assets/images/before-after-3.webp" alt="Before and After Junk Removal - Property Cleanout" loading="lazy" decoding="async" />
         </div>
         <div class="before-after-item">
-          <img src="assets/images/before-after-1.png" alt="Before and After Junk Removal - Driveway Transformation" loading="lazy" decoding="async" />
+          <img src="assets/images/before-after-1.webp" alt="Before and After Junk Removal - Driveway Transformation" loading="lazy" decoding="async" />
         </div>
         <div class="before-after-item">
-          <img src="assets/images/before-after-2.png" alt="Before and After Junk Removal - Garage Cleanout" loading="lazy" decoding="async" />
+          <img src="assets/images/before-after-2.webp" alt="Before and After Junk Removal - Garage Cleanout" loading="lazy" decoding="async" />
         </div>
       </div>
     </div>
@@ -323,6 +335,8 @@
     <a href="tel:+14697210145">Call Now: 469-721-0145</a>
   </div>
 
+  </main>
+
   <script>
     // Meta Pixel utilities (main.js not loaded on this page)
     var FB_PIXEL_ID = '2040716276843820';
@@ -373,6 +387,8 @@
       e.preventDefault();
 
       var submitBtn = this.querySelector('.submit-btn');
+      if (!submitBtn) return;
+      setQuoteMessage('');
       var originalText = submitBtn.textContent;
       submitBtn.textContent = 'Sending...';
       submitBtn.disabled = true;
@@ -425,7 +441,7 @@
 
         clearTimeout(timeoutId);
 
-        var result = await response.json();
+        var result = await response.json().catch(function() { return {}; });
 
         if (response.ok && result.success) {
           var formContainer = document.querySelector('.form-container');
@@ -487,17 +503,24 @@
             } catch (_fbErr) {}
           }
         } else {
-          alert((result && result.error) || 'Something went wrong. Please call us at 469-721-0145.');
+          setQuoteMessage((result && result.error) || 'Something went wrong. Please call us at 469-721-0145.', 'error');
           submitBtn.textContent = originalText;
           submitBtn.disabled = false;
         }
       } catch (error) {
         console.error('Form submission error:', error);
-        alert('Unable to submit right now. Please call us at 469-721-0145.');
+        setQuoteMessage('Unable to submit right now. Please call us at 469-721-0145.', 'error');
         submitBtn.textContent = originalText;
         submitBtn.disabled = false;
       }
     });
+
+    function setQuoteMessage(message, type) {
+      var el = document.getElementById('quote-message');
+      if (!el) return;
+      el.textContent = message || '';
+      el.className = type === 'error' ? 'quote-message quote-message-error' : 'quote-message';
+    }
   </script>
 
 </body>

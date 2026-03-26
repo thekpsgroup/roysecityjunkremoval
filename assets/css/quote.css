@@ -28,6 +28,32 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  z-index: 9999;
+  padding: 0.75rem 1.25rem;
+  background: var(--dark);
+  color: var(--white);
+  font-weight: 700;
+  text-decoration: none;
+  transition: top 0.15s ease;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
 .hero {
   background: linear-gradient(135deg, #000000 0%, #111111 100%);
   color: var(--white);
@@ -127,6 +153,14 @@ body {
   font-size: 15px;
 }
 
+.quote-meta {
+  text-align: center;
+  font-size: 13px;
+  color: #2f5f1b;
+  margin: 0 0 20px;
+  font-weight: 600;
+}
+
 #quoteForm {
   display: grid;
   gap: 14px;
@@ -206,6 +240,18 @@ body {
   font-size: 12px;
   color: var(--text-light);
   margin-top: 12px;
+}
+
+.quote-message {
+  min-height: 1.25rem;
+  margin-top: 8px;
+  font-size: 13px;
+  text-align: center;
+}
+
+.quote-message-error {
+  color: #9b2c2c;
+  font-weight: 600;
 }
 
 .consent-note {

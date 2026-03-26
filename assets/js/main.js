@@ -54,6 +54,12 @@
   const mainNav    = document.querySelector('.main-nav');
 
   if (menuToggle && mainNav) {
+    // Ensure the toggle is explicitly associated with its controlled nav region.
+    if (!mainNav.id) mainNav.id = 'main-navigation';
+    if (!menuToggle.getAttribute('aria-controls')) {
+      menuToggle.setAttribute('aria-controls', mainNav.id);
+    }
+
     menuToggle.addEventListener('click', () => {
       const isOpen = mainNav.classList.toggle('open');
       menuToggle.classList.toggle('open', isOpen);
@@ -152,6 +158,7 @@
       e.preventDefault();
 
       const btn = contactForm.querySelector('[type="submit"]');
+      if (!btn) return;
       const originalHtml = btn.innerHTML;
 
       // Validate required fields

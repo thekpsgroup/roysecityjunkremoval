@@ -352,7 +352,16 @@ module.exports = async function handler(req, res) {
   }
 
   try {
-    const body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
+    let body;
+    if (typeof req.body === 'string') {
+      try {
+        body = JSON.parse(req.body);
+      } catch {
+        return res.status(400).json({ error: 'Invalid request payload.' });
+      }
+    } else {
+      body = req.body;
+    }
     const {
       first_name: firstName = '',
       last_name:  lastName  = '',
@@ -502,7 +511,7 @@ module.exports = async function handler(req, res) {
       : Promise.resolve();
 
     // Await emails + CAPI in parallel
-    const [[...emailResults]] = await Promise.all([
+    const [emailResults] = await Promise.all([
       Promise.allSettled(emailSends),
       capiPromise,
     ]);

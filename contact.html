@@ -148,7 +148,7 @@
   <!-- End Meta Pixel -->
 </head>
 <body>
-<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2040716276843820&ev=PageView&noscript=1"/></noscript>
+<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=2040716276843820&ev=PageView&noscript=1"/></noscript>
 <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <!-- Header -->
@@ -174,7 +174,7 @@
           </a>
           <a href="/contact" class="btn btn-primary btn-sm">Free Quote</a>
         </div>
-        <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <button type="button" class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
       </div>
@@ -311,11 +311,11 @@
               <div class="form-row">
                 <div class="form-group">
                   <label for="first-name">First Name <span class="required">*</span></label>
-                  <input type="text" id="first-name" name="first_name" placeholder="John" required autocomplete="given-name" />
+                  <input type="text" id="first-name" name="first_name" placeholder="John" required autocomplete="given-name" maxlength="100" />
                 </div>
                 <div class="form-group">
                   <label for="last-name">Last Name <span class="required">*</span></label>
-                  <input type="text" id="last-name" name="last_name" placeholder="Smith" required autocomplete="family-name" />
+                  <input type="text" id="last-name" name="last_name" placeholder="Smith" required autocomplete="family-name" maxlength="100" />
                 </div>
               </div>
 
@@ -323,11 +323,11 @@
               <div class="form-row">
                 <div class="form-group">
                   <label for="phone">Phone Number <span class="required">*</span></label>
-                  <input type="tel" id="phone" name="phone" placeholder="(469) 000-0000" required autocomplete="tel" />
+                  <input type="tel" id="phone" name="phone" placeholder="(469) 000-0000" required autocomplete="tel" inputmode="tel" maxlength="30" pattern="[0-9()\-\s+]{10,30}" />
                 </div>
                 <div class="form-group">
                   <label for="email">Email Address</label>
-                  <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" />
+                  <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" maxlength="254" />
                   <span class="form-helper">Optional — for confirmation email</span>
                 </div>
               </div>
@@ -335,7 +335,7 @@
               <!-- Address -->
               <div class="form-group">
                 <label for="address">Pickup Address / City <span class="required">*</span></label>
-                <input type="text" id="address" name="address" placeholder="123 Oak Lane, Royse City, TX 75189" required autocomplete="street-address" />
+                <input type="text" id="address" name="address" placeholder="123 Oak Lane, Royse City, TX 75189" required autocomplete="street-address" maxlength="300" />
                 <span class="form-helper">Where do you need junk removed?</span>
               </div>
 
@@ -367,7 +367,7 @@
               <!-- Description -->
               <div class="form-group">
                 <label for="description">Describe What Needs to Go <span class="required">*</span></label>
-                <textarea id="description" name="description" rows="4" required
+                <textarea id="description" name="description" rows="4" required maxlength="600"
                   placeholder="Example: Old sectional couch, broken treadmill, and several boxes of miscellaneous items in the garage. Stairs involved."></textarea>
                 <span class="form-helper">More detail = more accurate quote. Mention any stairs, long carry, or access issues.</span>
               </div>
@@ -444,7 +444,7 @@
       <div class="faq-list">
 
         <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
+          <button type="button" class="faq-question" aria-expanded="false">
             How quickly will you respond to my quote request?
             <span class="faq-chevron" aria-hidden="true">▼</span>
           </button>
@@ -452,7 +452,7 @@
         </div>
 
         <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
+          <button type="button" class="faq-question" aria-expanded="false">
             Can I get same-day service?
             <span class="faq-chevron" aria-hidden="true">▼</span>
           </button>
@@ -460,7 +460,7 @@
         </div>
 
         <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
+          <button type="button" class="faq-question" aria-expanded="false">
             How is pricing determined?
             <span class="faq-chevron" aria-hidden="true">▼</span>
           </button>
