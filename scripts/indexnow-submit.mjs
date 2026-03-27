@@ -8,7 +8,7 @@
  * Requires internet access. Run after every production deploy that adds/changes pages.
  */
 
-const KEY  = '7cbca51d96d1ad3fb50135ae2696a1e0';
+const KEY  = 'j51vv433a7v6639ja8avqf5td35bakan';
 const HOST = 'www.roysecityjunkremoval.com';
 
 const URLS = [
