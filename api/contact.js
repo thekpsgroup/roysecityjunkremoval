@@ -243,9 +243,9 @@ function buildNotificationHtml(d) {
         <tr>
           <td style="background:#f7fcf4;padding:16px 36px;text-align:center;border-top:1px solid #d2e8c4;">
             <p style="margin:0;color:#8a9e88;font-size:12px;">
-              Royse City Junk Removal · Operated by I30 Builders LLC<br>
-              Satellite Office: 118 E Main Street, Royse City, TX 75189<br>
-              Headquarters: 2346 FM 36, Caddo Mills, TX 75135 · 469-721-0145
+              Royse City Junk Removal · A trade name of I30 Builders, LLC<br>
+              Primary Office: 2346 FM 36 S, Caddo Mills, TX 75135 · 469-721-0145<br>
+              Owner: Karson Lawrence (Royse City, TX)
             </p>
           </td>
         </tr>
@@ -302,7 +302,7 @@ function buildConfirmationHtml(d) {
             </table>
 
             <p style="color:#8a9e88;font-size:13px;line-height:1.6;margin:24px 0 0;">
-              Royse City Junk Removal is an <em>I30 Builders Company</em> serving Royse City, Rockwall, Heath, Fate, Caddo Mills, Greenville, and surrounding areas of Northeast Texas.
+              Royse City Junk Removal is a trade name of <em>I30 Builders, LLC</em>, serving Royse City, Rockwall, Heath, Fate, Caddo Mills, Greenville, and surrounding areas of Northeast Texas.
             </p>
           </td>
         </tr>
@@ -310,9 +310,9 @@ function buildConfirmationHtml(d) {
         <tr>
           <td style="background:#f7fcf4;padding:16px 36px;text-align:center;border-top:1px solid #d2e8c4;">
             <p style="margin:0;color:#8a9e88;font-size:12px;">
-              © Royse City Junk Removal · Operated by I30 Builders LLC<br>
-              Satellite Office: 118 E Main Street, Royse City, TX 75189<br>
-              Headquarters: 2346 FM 36, Caddo Mills, TX 75135
+              © Royse City Junk Removal · A trade name of I30 Builders, LLC<br>
+              Primary Office: 2346 FM 36 S, Caddo Mills, TX 75135<br>
+              Owner: Karson Lawrence (Royse City, TX)
             </p>
           </td>
         </tr>
@@ -431,7 +431,7 @@ module.exports = async function handler(req, res) {
     const resend = new Resend(process.env.RESEND_API_KEY);
 
     const fromAddress = process.env.RESEND_FROM || 'Royse City Junk Removal <onboarding@resend.dev>';
-    const notifyTo    = process.env.NOTIFY_EMAIL || 'sales@i30builders.com';
+    const notifyTo    = process.env.NOTIFY_EMAIL || 'sales@roysecityjunkremoval.com';
     const validEmail  = email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
     const d = {
